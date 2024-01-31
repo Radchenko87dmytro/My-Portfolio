@@ -4,8 +4,19 @@ function sum(a: number, b: number) {
 
 //sum(12, 14);
 
-export function Todolist(props: any) {
-  // props = {title: "What to learn"}
+export interface TaskType {
+  id: number;
+  title: string;
+  isDone: boolean;
+}
+
+interface PropsType {
+  title: string;
+  tasks: Array<TaskType>;
+}
+
+export function Todolist(props: PropsType) {
+  // props = {title: "What to learn", tasks: []}
   return (
     <div>
       <h3>{props.title}</h3>
@@ -15,8 +26,8 @@ export function Todolist(props: any) {
       </div>
       <ul>
         <li>
-          <input type={"checkbox"} checked={true} />
-          <span>CSS&HTML</span>
+          <input type={"checkbox"} checked={props.tasks[0].isDone} />
+          <span>{props.tasks[0].title}</span>
         </li>
         <li>
           <input type="checkbox" checked={true} />
