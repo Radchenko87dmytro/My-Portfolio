@@ -4,15 +4,16 @@ function sum(a: number, b: number) {
 
 //sum(12, 14);
 
-export interface TaskType {
+interface TaskType {
   id: number;
   title: string;
   isDone: boolean;
 }
 
-interface PropsType {
+export interface PropsType {
   title: string;
   tasks: Array<TaskType>;
+  removeTask: Function;
 }
 
 export function Todolist(props: PropsType) {
@@ -25,14 +26,14 @@ export function Todolist(props: PropsType) {
         <button>+</button>
       </div>
       <ul>
-        {props.tasks.map((i) => {
+        {props.tasks.map((t) => {
           return (
-            <li key={i.id}>
-              <input type={"checkbox"} checked={i.isDone} />
-              <span>{i.title}</span>
+            <li key={t.id}>
+              <input type={"checkbox"} checked={t.isDone} />
+              <span>{t.title}</span>
               <button
                 onClick={() => {
-                  alert(i.id);
+                  props.removeTask(t.id);
                 }}
               >
                 x
