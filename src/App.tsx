@@ -1,23 +1,24 @@
 import React from "react";
+import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Todolist, PropsType } from "./Todolist";
 
 function App() {
-  let tasks = [
+  let initTasks = [
     { id: 1, title: "CSS", isDone: true },
     { id: 2, title: "JS", isDone: true },
     { id: 3, title: "React", isDone: false },
     { id: 4, title: "Redux", isDone: false },
   ];
 
+  const [tasks, setTasks] = useState(initTasks);
+
   function removeTask(id: number) {
     //debugger;
-    let resultTasks = tasks.filter((t) => {
-      if (t.id !== id) return true;
-      else return false;
-    }); //t.id !=== id
-    console.log(resultTasks);
+    let filteredTasks = tasks.filter((t) => t.id !== id); //t.id !=== id
+    setTasks(filteredTasks);
+    console.log(filteredTasks);
   }
 
   // let tasks2: Array<TaskType> = [
