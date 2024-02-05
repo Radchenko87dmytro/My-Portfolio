@@ -4,7 +4,7 @@ function sum(a: number, b: number) {
 
 //sum(12, 14);
 
-interface TaskType {
+export interface TaskType {
   id: number;
   title: string;
   isDone: boolean;
