@@ -1,3 +1,4 @@
+import { FilterValuesType } from "./App";
 function sum(a: number, b: number) {
   alert(a + b);
 }
@@ -5,7 +6,7 @@ function sum(a: number, b: number) {
 //sum(12, 14);
 
 export interface TaskType {
-  id: number;
+  id: string;
   title: string;
   isDone: boolean;
 }
@@ -13,7 +14,9 @@ export interface TaskType {
 export interface PropsType {
   title: string;
   tasks: Array<TaskType>;
-  removeTask: Function;
+  removeTask: (id: string) => void;
+  changeFilter: (value: FilterValuesType) => void;
+  addTask: () => void;
 }
 
 export function Todolist(props: PropsType) {
@@ -23,7 +26,13 @@ export function Todolist(props: PropsType) {
       <h3>{props.title}</h3>
       <div>
         <input />
-        <button>+</button>
+        <button
+          onClick={() => {
+            props.addTask();
+          }}
+        >
+          +
+        </button>
       </div>
       <ul>
         {props.tasks.map((t) => {
@@ -43,9 +52,27 @@ export function Todolist(props: PropsType) {
         })}
       </ul>
       <div>
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        <button
+          onClick={() => {
+            props.changeFilter("all");
+          }}
+        >
+          All
+        </button>
+        <button
+          onClick={() => {
+            props.changeFilter("active");
+          }}
+        >
+          Active
+        </button>
+        <button
+          onClick={() => {
+            props.changeFilter("completed");
+          }}
+        >
+          Completed
+        </button>
       </div>
     </div>
   );
