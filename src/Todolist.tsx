@@ -1,4 +1,5 @@
 import { FilterValuesType } from "./App";
+import { useState } from "react";
 function sum(a: number, b: number) {
   alert(a + b);
 }
@@ -16,19 +17,33 @@ export interface PropsType {
   tasks: Array<TaskType>;
   removeTask: (id: string) => void;
   changeFilter: (value: FilterValuesType) => void;
-  addTask: () => void;
+  addTask: (title: string) => void;
 }
 
 export function Todolist(props: PropsType) {
-  // props = {title: "What to learn", tasks: []}
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  console.log(newTaskTitle);
+
   return (
     <div>
       <h3>{props.title}</h3>
       <div>
-        <input />
+        <input
+          value={newTaskTitle}
+          onChange={(e) => {
+            setNewTaskTitle(e.currentTarget.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.charCode === 13) {
+              props.addTask(newTaskTitle);
+              setNewTaskTitle("");
+            }
+          }}
+        />
         <button
           onClick={() => {
-            props.addTask();
+            props.addTask(newTaskTitle);
+            setNewTaskTitle("");
           }}
         >
           +
