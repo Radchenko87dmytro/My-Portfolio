@@ -1,5 +1,5 @@
 import { FilterValuesType } from "./App";
-import { useState } from "react";
+import { ChangeEvent, useState, KeyboardEvent } from "react";
 function sum(a: number, b: number) {
   alert(a + b);
 }
@@ -24,30 +24,30 @@ export function Todolist(props: PropsType) {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   console.log(newTaskTitle);
 
+  const onNetTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewTaskTitle(e.currentTarget.value);
+  };
+  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.charCode === 13) {
+      props.addTask(newTaskTitle);
+      setNewTaskTitle("");
+    }
+  };
+  const addTask = () => {
+    props.addTask(newTaskTitle);
+    setNewTaskTitle("");
+  };
+
   return (
     <div>
       <h3>{props.title}</h3>
       <div>
         <input
           value={newTaskTitle}
-          onChange={(e) => {
-            setNewTaskTitle(e.currentTarget.value);
-          }}
-          onKeyDown={(e) => {
-            if (e.charCode === 13) {
-              props.addTask(newTaskTitle);
-              setNewTaskTitle("");
-            }
-          }}
+          onChange={onNetTitleChangeHandler}
+          onKeyDown={onKeyPressHandler}
         />
-        <button
-          onClick={() => {
-            props.addTask(newTaskTitle);
-            setNewTaskTitle("");
-          }}
-        >
-          +
-        </button>
+        <button onClick={addTask}>+</button>
       </div>
       <ul>
         {props.tasks.map((t) => {
