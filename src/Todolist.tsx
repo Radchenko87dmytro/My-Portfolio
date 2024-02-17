@@ -18,13 +18,13 @@ export interface PropsType {
   removeTask: (id: string) => void;
   changeFilter: (value: FilterValuesType) => void;
   addTask: (title: string) => void;
+  changeTaskStatus: (taskId: string, isDone: boolean) => void;
 }
 
 export function Todolist(props: PropsType) {
-  const [newTaskTitle, setNewTaskTitle] = useState("");
-  console.log(newTaskTitle);
+  const [title, setNewTaskTitle] = useState("");
 
-  const onNetTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTaskTitle(e.currentTarget.value);
   };
   // const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -34,8 +34,10 @@ export function Todolist(props: PropsType) {
   //   }
   // };
   const addTask = () => {
-    props.addTask(newTaskTitle);
-    setNewTaskTitle("");
+    if (title.trim() !== "") {
+      props.addTask(title.trim());
+      setNewTaskTitle("");
+    }
   };
   const onAllClickHandler = () => props.changeFilter("all");
   const onActiveClickHandler = () => props.changeFilter("active");
@@ -46,20 +48,27 @@ export function Todolist(props: PropsType) {
       <h3>{props.title}</h3>
       <div>
         <input
-          value={newTaskTitle}
-          onChange={onNetTitleChangeHandler}
+          value={title}
+          onChange={onNewTitleChangeHandler}
           //onKeyDown={onKeyPressHandler}
         />
         <button onClick={addTask}>+</button>
       </div>
       <ul>
         {props.tasks.map((t) => {
+          const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+            props.changeTaskStatus(t.id, e.currentTarget.checked);
+          };
           const onRemoveHandler = () => {
             props.removeTask(t.id);
           };
           return (
             <li key={t.id}>
-              <input type={"checkbox"} checked={t.isDone} />
+              <input
+                type={"checkbox"}
+                checked={t.isDone}
+                onChange={onChangeHandler}
+              />
               <span>{t.title}</span>
               <button onClick={onRemoveHandler}>x</button>
             </li>

@@ -15,8 +15,6 @@ function App() {
     { id: v1(), title: "Redux", isDone: false },
   ]);
 
-  const [filter, setFilter] = useState<FilterValuesType>("all");
-
   function removeTask(id: string) {
     let filteredTasks = tasks.filter((t) => t.id !== id); //t.id !=== id
     setTasks(filteredTasks);
@@ -26,6 +24,7 @@ function App() {
   function addTask(title: string) {
     let newTask = { id: v1(), title: title, isDone: false };
     let newTasks = [newTask, ...tasks];
+
     setTasks(newTasks);
   }
 
@@ -33,12 +32,16 @@ function App() {
     setFilter(value);
   }
 
-  function changeStatus(taskId: string, isDone: boolean) {
+  const [filter, setFilter] = useState<FilterValuesType>("all");
+
+  function changeTaskStatus(taskId: string, isDone: boolean) {
+    console.log(taskId, " ", isDone);
+
     let task = tasks.find((t) => t.id === taskId);
     if (task) {
-      task.isDone = !isDone;
+      task.isDone = isDone;
     }
-    setTasks(tasks);
+    setTasks([...tasks]);
   }
 
   let tasksForTodolist = tasks;
@@ -57,6 +60,7 @@ function App() {
         removeTask={removeTask}
         changeFilter={changeFilter}
         addTask={addTask}
+        changeTaskStatus={changeTaskStatus}
       />
       {/* <Todolist title="Movies" tasks={tasks2} /> */}
     </div>
