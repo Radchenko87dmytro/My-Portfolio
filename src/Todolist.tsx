@@ -23,6 +23,7 @@ export interface PropsType {
 
 export function Todolist(props: PropsType) {
   const [title, setNewTaskTitle] = useState("");
+  const [error, setError] = useState("");
 
   const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTaskTitle(e.currentTarget.value);
@@ -37,6 +38,8 @@ export function Todolist(props: PropsType) {
     if (title.trim() !== "") {
       props.addTask(title.trim());
       setNewTaskTitle("");
+    } else {
+      setError("Field is required");
     }
   };
   const onAllClickHandler = () => props.changeFilter("all");
@@ -50,9 +53,10 @@ export function Todolist(props: PropsType) {
         <input
           value={title}
           onChange={onNewTitleChangeHandler}
-          //onKeyDown={onKeyPressHandler}
+          className={error && "error"}
         />
         <button onClick={addTask}>+</button>
+        {error && <div className="error-message">{error}</div>}
       </div>
       <ul>
         {props.tasks.map((t) => {
