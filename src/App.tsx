@@ -78,6 +78,7 @@ function App() {
   };
   return (
     <div className="App">
+      <input /> <button>x</button>
       {todolists.map((tl) => {
         let tasksForTodolist = tasksObj[tl.id];
 
@@ -103,7 +104,6 @@ function App() {
           />
         );
       })}
-
       {/* <Todolist title="Movies" tasks={tasks2} /> */}
     </div>
   );
