@@ -1,17 +1,17 @@
 import { FilterValuesType } from "./App";
 import { ChangeEvent, useState, KeyboardEvent } from "react";
-import { AddItemForm } from "./addItem";
+import { AddItemForm } from "./AddItemForm";
 function sum(a: number, b: number) {
   alert(a + b);
 }
 
 //sum(12, 14);
 
-export interface TaskType {
+export type TaskType = {
   id: string;
   title: string;
   isDone: boolean;
-}
+};
 
 export interface PropsType {
   id: string;
@@ -34,9 +34,12 @@ export function Todolist(props: PropsType) {
   const onActiveClickHandler = () => props.changeFilter("active", props.id);
   const onCompletedClickHandler = () =>
     props.changeFilter("completed", props.id);
-
   const removeTodolist = () => {
     props.removeTodolist(props.id);
+  };
+
+  const addTask = (title: string) => {
+    props.addTask(title, props.id);
   };
 
   return (
@@ -44,7 +47,7 @@ export function Todolist(props: PropsType) {
       <h3>
         {props.title} <button onClick={removeTodolist}>x</button>
       </h3>
-      <AddItemForm id={props.id} addTask={props.addTask}></AddItemForm>
+      <AddItemForm addItem={addTask} />
 
       <ul>
         {props.tasks.map((t) => {
