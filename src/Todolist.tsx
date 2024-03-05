@@ -1,6 +1,7 @@
 import { FilterValuesType } from "./App";
 import { ChangeEvent, useState, KeyboardEvent } from "react";
 import { AddItemForm } from "./AddItemForm";
+import { EditableSpan } from "./Editablespan";
 function sum(a: number, b: number) {
   alert(a + b);
 }
@@ -64,7 +65,8 @@ export function Todolist(props: PropsType) {
                 checked={t.isDone}
                 onChange={onChangeHandler}
               />
-              <span>{t.title}</span>
+
+              <EditableSpan title={t.title} />
               <button onClick={onRemoveHandler}>x</button>
             </li>
           );
