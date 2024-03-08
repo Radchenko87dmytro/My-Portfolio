@@ -56,6 +56,7 @@ export function Todolist(props: PropsType) {
       <h3>
         <EditableSpan title={props.title} onChange={changeTodolistTitle} />
         <Button
+          style={{ margin: "10px" }}
           onClick={removeTodolist}
           variant={"contained"}
           color={"secondary"}
@@ -79,11 +80,13 @@ export function Todolist(props: PropsType) {
             props.removeTask(t.id, props.id);
           };
           return (
-            <li key={t.id} className={t.isDone ? "is-done" : ""}>
+            <div key={t.id} className={t.isDone ? "is-done" : ""}>
               <Checkbox checked={t.isDone} onChange={onChangeStatusHandler} />
               <EditableSpan title={t.title} onChange={onChangeTitleHandler} />
-              <button onClick={onRemoveHandler}>x</button>
-            </li>
+              <button style={{ margin: "10px" }} onClick={onRemoveHandler}>
+                x
+              </button>
+            </div>
           );
         })}
       </ul>

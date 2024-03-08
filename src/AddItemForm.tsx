@@ -38,7 +38,12 @@ export function AddItemForm(props: AddItemFormPropsType) {
         helperText={error}
       />
 
-      <Button onClick={addTask} variant={"contained"} color={"primary"}>
+      <Button
+        onClick={addTask}
+        variant={"contained"}
+        color={"primary"}
+        style={{ margin: "10px" }}
+      >
         +
       </Button>
       {/* {error && <div className="error-message">{error}</div>} */}
