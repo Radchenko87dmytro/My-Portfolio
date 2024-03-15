@@ -64,21 +64,21 @@ export const todolistsReducer = (
   }
 };
 
-export const RemoveTodolistAC = (
+export const removeTodolistAC = (
   todolistId: string
 ): RemoveTodolistActionType => {
   return { type: "REMOVE-TODOLIST", id: todolistId };
 };
-export const AddTodolistAC = (title: string): AddTodolistActionType => {
+export const addTodolistAC = (title: string): AddTodolistActionType => {
   return { type: "ADD-TODOLIST", title: title };
 };
-export const ChangeTodolistTitleAC = (
+export const changeTodolistTitleAC = (
   id: string,
   title: string
 ): ChangeTodolistActionType => {
   return { type: "CHANGE-TODOLIST-TITLE", id: id, title: title };
 };
-export const ChangeTodolistFilterAC = (
+export const changeTodolistFilterAC = (
   id: string,
   filter: FilterValuesType
 ): ChangeTodolistFilterActionType => {
