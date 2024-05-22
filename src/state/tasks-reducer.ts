@@ -108,7 +108,7 @@ export const changeTaskStatusAC = (
   return { type: "CHANGE-TASK-STATUS", isDone, todolistId, taskId };
 };
 
-export const changeTaskSTitleAC = (
+export const changeTaskTitleAC = (
   taskId: string,
   title: string,
   todolistId: string

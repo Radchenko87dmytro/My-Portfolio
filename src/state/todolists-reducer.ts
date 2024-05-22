@@ -80,8 +80,8 @@ export const changeTodolistTitleAC = (
   return { type: "CHANGE-TODOLIST-TITLE", id: id, title: title };
 };
 export const changeTodolistFilterAC = (
-  id: string,
-  filter: FilterValuesType
+  filter: FilterValuesType,
+  todolistId: string
 ): ChangeTodolistFilterActionType => {
-  return { type: "CHANGE-TODOLIST-FILTER", id: id, filter: filter };
+  return { type: "CHANGE-TODOLIST-FILTER", filter: filter, id: todolistId };
 };

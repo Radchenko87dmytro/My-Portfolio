@@ -1,7 +1,7 @@
 import { TasksStateType } from "./../App";
 import {
   addTaskAC,
-  changeTaskSTitleAC,
+  changeTaskTitleAC,
   changeTaskStatusAC,
   removeTaskAC,
   tasksReducer,
@@ -94,7 +94,7 @@ test(" title of specified task should be changed", () => {
     ],
   };
 
-  const action = changeTaskSTitleAC("2", "Milkyway", "todolistId2");
+  const action = changeTaskTitleAC("2", "Milkyway", "todolistId2");
   const endState = tasksReducer(startState, action);
 
   expect(endState["todolistId2"][1].title).toBe("Milkyway");
