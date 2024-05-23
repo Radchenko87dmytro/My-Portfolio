@@ -1,8 +1,6 @@
-import React from "react";
 import { useState } from "react";
-
 import "./App.css";
-import { Todolist, PropsType, TaskType } from "./Todolist";
+import { Todolist, TaskType } from "./Todolist";
 import { v1 } from "uuid";
 
 export type FilterValuesType = "all" | "completed" | "active";
@@ -20,7 +18,6 @@ function App() {
   const [filter, setFilter] = useState<FilterValuesType>("all");
 
   function removeTask(id: string) {
-    //debugger;
     let filteredTasks = tasks.filter((t) => t.id !== id); //t.id !=== id
     setTasks(filteredTasks);
     console.log(filteredTasks);
