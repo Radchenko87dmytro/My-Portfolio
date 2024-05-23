@@ -17,8 +17,21 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { addTodolistAC, changeTodolistFilterAC, changeTodolistTitleAC, removeTodolistAC, todolistsReducer } from "./state/todolists-reducer";
-import {  changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer } from "./state/tasks-reducer";
+import {
+  RemoveTodolistActionType,
+  //ActionsType,
+  addTodolistAC,
+  changeTodolistFilterAC,
+  changeTodolistTitleAC,
+  removeTodolistAC,
+  todolistsReducer,
+} from "./state/todolists-reducer";
+import {
+  changeTaskStatusAC,
+  changeTaskTitleAC,
+  removeTaskAC,
+  tasksReducer,
+} from "./state/tasks-reducer";
 
 export type FilterValuesType = "all" | "completed" | "active";
 export type TodolistType = {
@@ -32,7 +45,6 @@ export type TasksStateType = {
 };
 
 function AppWithReducers() {
-
   let todolistId1 = v1();
   let todolistId2 = v1();
 
@@ -55,42 +67,44 @@ function AppWithReducers() {
   });
 
   function removeTask(id: string, todolistId: string) {
-    dispatchToTasksReducer(removeTaskAC(id, todolistId))
+    dispatchToTasksReducer(removeTaskAC(id, todolistId));
   }
 
   function addTask(title: string, todolistId: string) {
-    dispatchToTasksReducer(removeTaskAC(title, todolistId))
+    dispatchToTasksReducer(removeTaskAC(title, todolistId));
   }
 
-  function changeStatus(id: string, isDone: boolean, todolistId: string) { 
-    dispatchToTasksReducer(changeTaskStatusAC(id, isDone, todolistId))
+  function changeStatus(id: string, isDone: boolean, todolistId: string) {
+    dispatchToTasksReducer(changeTaskStatusAC(id, isDone, todolistId));
   }
 
   function changeTaskTitle(id: string, newTitle: string, todolistId: string) {
-    dispatchToTasksReducer(changeTaskTitleAC(id,newTitle, todolistId))
+    dispatchToTasksReducer(changeTaskTitleAC(id, newTitle, todolistId));
   }
 
   function changeFilter(value: FilterValuesType, todolistId: string) {
-    const action = changeTodolistFilterAC( value, todolistId)
-    dispatchToTodolistsReducer(action)
+    const action = changeTodolistFilterAC(value, todolistId);
+    dispatchToTodolistsReducer(action);
   }
 
   let removeTodolist = (todolistId: string) => {
-    const action: any = removeTodolistAC(todolistId)
-     dispatchToTasksReducer(action)
-     dispatchToTodolistsReducer(action)
+    const action = removeTodolistAC(todolistId);
+    // dispatchToTasksReducer(action);
+    dispatchToTodolistsReducer(action);
   };
 
   function changeTodolistTitle(id: string, newTitle: string) {
-    const action = changeTodolistTitleAC(id, title)
-dispatchToTodolistsReducer(action)
+    const action = changeTodolistTitleAC(id, title);
+    dispatchToTodolistsReducer(action);
   }
 
   function addTodoList(title: string) {
-    const action = addTodolistAC(title)
-    dispatchToTasksReducer(action)
-    dispatchToTodolistsReducer(action)
+    const action = addTodolistAC(title);
+    dispatchToTasksReducer(action);
+    dispatchToTodolistsReducer(action);
   }
+
+  //npm install --save-dev react-app-rewired crypto-browserify stream-browserify assert stream-http https-browserify os-browserify url buffer process
 
   return (
     <div className="App">
