@@ -1,10 +1,6 @@
+import "./App.css";
 import { FilterValuesType } from "./App";
 import { useState } from "react";
-function sum(a: number, b: number) {
-  alert(a + b);
-}
-
-//sum(12, 14);
 
 export interface TaskType {
   id: string;
@@ -25,7 +21,7 @@ export function Todolist(props: PropsType) {
   console.log(newTaskTitle);
 
   return (
-    <div>
+    <div className="todolist">
       <h3>{props.title}</h3>
       <div>
         <input

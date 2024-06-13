@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 import { Todolist, PropsType, TaskType } from "./Todolist";
 import { v1 } from "uuid";
