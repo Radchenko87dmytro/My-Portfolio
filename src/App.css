@@ -17,26 +17,69 @@ li {
   margin: 3rem 0;
 }
 button {
+  margin: 10px;
+  border-radius: 20px;
+  width: 20vw;
+}
+/* input {
+  font-size: 5rem;
+  width: 5rem;
+} */
+/* input[type="checkbox"] {
+  display: none;
+} */
+.custom-checkbox {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border: 2px solid #555;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+/* .custom-checkbox::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 9px;
+  top: 5px;
+  width: 6px;
+  height: 12px;
+  border: solid #000;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+} */
+input[type="checkbox"]:checked + .custom-checkbox::after {
+  display: block;
+}
+/* button {
   margin: 0 1rem;
   border-radius: 10px;
-}
+} */
 .App {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100%;
   background-color: beige;
 }
 .todolist {
+  margin: 5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 6rem;
   background-color: aqua;
-  border-radius: 10%;
+  border-radius: 50px;
 }
 .App > div {
-  margin-right: 50px;
+  /* margin-right: 50px; */
+}
+.input-container {
+  display: flex;
+  justify-content: center;
 }
 .input-area {
   text-align: center;
@@ -47,6 +90,9 @@ button {
 }
 
 .task-item {
+  font-size: 3rem;
+}
+.checkbox {
   font-size: 2rem;
 }
 .button {
@@ -54,6 +100,10 @@ button {
   width: 4rem;
   height: 4rem;
   margin-left: 2rem;
+  font-size: 1.5rem;
+}
+.del {
+  width: 5rem;
 }
 .button:active {
   background-color: green;

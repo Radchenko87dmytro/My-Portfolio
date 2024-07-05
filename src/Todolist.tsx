@@ -1,6 +1,6 @@
 import "./App.css";
 import { FilterValuesType } from "./App";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export interface TaskType {
   id: string;
@@ -9,7 +9,6 @@ export interface TaskType {
 }
 
 export interface PropsType {
-  title: string;
   tasks: Array<TaskType>;
   removeTask: (id: string) => void;
   changeFilter: (value: FilterValuesType) => void;
@@ -20,40 +19,50 @@ export function Todolist(props: PropsType) {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   console.log(newTaskTitle);
 
+  const taskTitleHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    setNewTaskTitle(event.currentTarget.value);
+  };
+
+  const addTaskHandler = () => {
+    props.addTask(newTaskTitle);
+    setNewTaskTitle("");
+  };
+
+  const removeTaskHandler = (id: string) => {
+    props.removeTask(id);
+  };
+
   return (
     <div className="todolist">
       <div>
-        <h1>{props.title}</h1>
-        <div>
+        <h1>What to learn</h1>
+        <div className="input-container">
           <input
             className="input-area"
             value={newTaskTitle}
-            onChange={(e) => {
-              setNewTaskTitle(e.currentTarget.value);
-            }}
+            onChange={taskTitleHandler}
           />
-          <button
-            className="button"
-            onClick={() => {
-              props.addTask(newTaskTitle);
-              setNewTaskTitle("");
-            }}
-          >
-            <h2>Add</h2>
+          <button className="button" onClick={addTaskHandler}>
+            Add
           </button>
         </div>
         <ul>
           {props.tasks.map((t) => {
             return (
               <li className="task-item" key={t.id}>
-                <input type={"checkbox"} checked={t.isDone} />
+                <input
+                  className="custom-checkbox"
+                  type={"checkbox"}
+                  checked={t.isDone}
+                />
                 <span>{t.title}</span>
                 <button
+                  className="button del"
                   onClick={() => {
-                    props.removeTask(t.id);
+                    removeTaskHandler(t.id);
                   }}
                 >
-                  <h2>Delete</h2>
+                  Delete
                 </button>
               </li>
             );
