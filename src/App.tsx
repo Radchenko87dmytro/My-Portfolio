@@ -25,6 +25,7 @@ function App() {
 
   function addTask(title: string) {
     let newTask = { id: v1(), title: title, isDone: false };
+    //newTask.id = tasks.length + 1
     let newTasks = [newTask, ...tasks];
     setTasks(newTasks);
   }
@@ -57,11 +58,11 @@ function App() {
         changeFilter={changeFilter}
         addTask={addTask}
         changeStatus={changeStatus}
+        filter={filter}
       />
       <div className="links">
         <p>icons8.com</p>
       </div>
-      {/* <Todolist title="Movies" tasks={tasks2} /> */}
     </div>
   );
 }
