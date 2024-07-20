@@ -35,6 +35,9 @@ button {
   border-radius: 20px;
   width: 20vw;
 }
+svg {
+  display: flex;
+}
 svg:hover {
   fill: red;
 }
@@ -67,9 +70,6 @@ svg:active {
   justify-content: center;
   align-items: center;
   height: 100%;
-  /* width: 100vw;
-  
-  background-color: beige; */
 }
 .todolist-container {
   /* margin: 5rem auto; */
@@ -78,9 +78,8 @@ svg:active {
   align-items: center;
   padding: 6rem;
   background-color: #a1f7f7;
-  /* border: 1px solid gray;
-  border-radius: 50px; */
-  /* max-width: 800px; */
+  /* height: 100%; */
+  height: calc(100vh - 89px);
 }
 
 .input-container {
@@ -127,6 +126,11 @@ svg:active {
   justify-content: center;
   align-items: center;
   width: 100%;
+  /* height: auto; */
+  height: 30vh;
+  /* height: calc(100vh-50vh); */
+
+  overflow: auto;
 }
 .task-container {
   display: flex;

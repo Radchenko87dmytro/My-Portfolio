@@ -136,6 +136,9 @@ export function Todolist(props: PropsType) {
           </button>
         </div>
         <ul className="task-section">
+          {props.tasks.length === 0 && (
+            <p>You don't have any items on this list</p>
+          )}
           {props.tasks.map((t) => {
             const onChangeHandler = (
               event: React.ChangeEvent<HTMLInputElement>
