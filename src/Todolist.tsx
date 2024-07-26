@@ -22,15 +22,51 @@ export function Todolist(props: PropsType) {
   const [error, setError] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
 
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   // Ensure that the element exists and is of type HTMLInputElement
+  //   const inputElement = document.getElementById(
+  //     "input-area"
+  //   ) as HTMLInputElement;
+
+  //   if (inputElement) {
+  //     // Setting the maxLength property correctly
+  //     inputElement.maxLength = 6;
+
+  //     // Optional: Adding an event listener to handle input
+  //     inputElement.addEventListener("input", (event) => {
+  //       const target = event.target as HTMLInputElement;
+  //       const maxLength = 6;
+
+  //       if (target.value.length > maxLength) {
+  //         target.value = target.value.slice(0, maxLength);
+  //       }
+  //     });
+  //   }
+  // });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const inputElement = document.getElementById(
+      "input-area"
+    ) as HTMLInputElement;
+    const labelElement = document.getElementById("label") as HTMLElement;
+
+    inputElement.reportValidity();
+    if (inputElement.validity.tooLong) {
+      labelElement.innerText = "Too many characters in the textarea.";
+    } else {
+      labelElement.innerText = "Input is valid…";
+    }
+  });
+
   // Set status
   useEffect(() => {
     if (newTaskTitle.trim() === "") {
       setBtnDisabled(true);
       setError("Type please the text");
       //setNewTaskTitle("Type please the text");
-    } else if (newTaskTitle.trim().length >= 20) {
-      setBtnDisabled(true);
-      setError("Text cannot be longer then 20 letter.");
+      // } else if (newTaskTitle.trim().length >= 20) {
+      //   setBtnDisabled(true);
+      //   setError("Text cannot be longer then 20 letter.");
       // setNewTaskTitle("Text schould be schorter");
     } else {
       setBtnDisabled(false);
@@ -46,53 +82,32 @@ export function Todolist(props: PropsType) {
   const addTaskHandler = () => {
     props.addTask(newTaskTitle);
     setNewTaskTitle("");
-
-    // if (newTaskTitle.trim() !== "") {
-    //   props.addTask(newTaskTitle);
-    //   setNewTaskTitle("");
-    // setError("");
-    //}
   };
 
   const removeTaskHandler = (id: string) => {
     props.removeTask(id);
   };
 
-  // const [color1, setColor1] = useState<string>("");
-  // const [color2, setColor2] = useState<string>("");
-  // const [color3, setColor3] = useState<string>("");
-
-  // const toggleColor1 = () => {
-  //   setColor1((prevColor) => (prevColor === "" ? "green" : ""));
-  //   setColor2("");
-  //   setColor3("");
-  // };
-
-  // const toggleColor2 = () => {
-  //   setColor2((prevColor) => (prevColor === "" ? "green" : ""));
-  //   setColor1("");
-  //   setColor3("");
-  // };
-
-  // const toggleColor3 = () => {
-  //   setColor3((prevColor) => (prevColor === "" ? "green" : ""));
-  //   setColor1("");
-  //   setColor2("");
-  // };
-
   return (
     <div className="todolist-container">
       <div>
-        <h1>What to learn</h1>
+        <label htmlFor="input-area" id="label">
+          What to learn
+        </label>
         <div className="input-container">
           <input
             className="input-area"
+            type="text"
+            id="input-area"
             value={newTaskTitle}
             onChange={taskTitleHandler}
             placeholder="Add a new task..."
+
+            //maxlength="10"
+            // maxLength="6"
           />
           <button
-            className="add-button"
+            className={btnDisabled ? "add-button-disabled" : "add-button"}
             onClick={addTaskHandler}
             disabled={btnDisabled}
           >
@@ -100,36 +115,29 @@ export function Todolist(props: PropsType) {
           </button>
         </div>
 
-        {/* {errorMessage && !btnDisabled} */}
         <p className="error">{error}</p>
 
         <div className="filter-section">
           <button
-            //style={{ backgroundColor: color3 }}
             className={props.filter === "all" ? "active-filter" : ""}
             onClick={() => {
               props.changeFilter("all");
-              //toggleColor3();
             }}
           >
             <h2> All</h2>
           </button>
           <button
-            //style={{ backgroundColor: color1 }}
             className={props.filter === "active" ? "active-filter" : ""}
             onClick={() => {
               props.changeFilter("active");
-              //toggleColor1();
             }}
           >
             <h2>Active</h2>
           </button>
           <button
-            //style={{ backgroundColor: color2 }}
             className={props.filter === "completed" ? "active-filter" : ""}
             onClick={() => {
               props.changeFilter("completed");
-              //toggleColor2();
             }}
           >
             <h2>Completed</h2>
@@ -137,7 +145,9 @@ export function Todolist(props: PropsType) {
         </div>
         <ul className="task-section">
           {props.tasks.length === 0 && (
-            <p>You don't have any items on this list</p>
+            <div className="task-message">
+              <p>You don't have any items on this list</p>
+            </div>
           )}
           {props.tasks.map((t) => {
             const onChangeHandler = (
@@ -152,7 +162,6 @@ export function Todolist(props: PropsType) {
                     className="custom-checkbox"
                     type={"checkbox"}
                     checked={t.isDone}
-                    //checked={isDone.isDone}
                     onChange={onChangeHandler}
                   />
                   <span>{t.title}</span>

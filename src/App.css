@@ -1,4 +1,4 @@
-/* font-size: calc(10px + 2vmin); */
+/* Canceling default styles */
 
 * {
   margin: 0;
@@ -6,14 +6,17 @@
   box-sizing: border-box;
 }
 
+/* General */
+
 body {
   width: 100%;
 }
 
-h1 {
+label {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 2rem;
 }
 h2 {
   padding: 1rem;
@@ -25,32 +28,28 @@ ul {
   padding: 1rem 0;
   border-radius: 20px;
 }
+
 li {
   height: 2rem;
   width: 100%;
   margin: 3rem 0;
 }
+
 button {
   margin: 10px;
   border-radius: 20px;
   width: 20vw;
+  cursor: pointer;
 }
+
 svg {
   display: flex;
 }
+
 svg:hover {
   fill: red;
+  cursor: pointer;
 }
-svg:active {
-  fill: red;
-}
-/* input {
-  font-size: 5rem;
-  width: 5rem;
-} */
-/* input[type="checkbox"] {
-  display: none;
-} */
 
 /* .custom-checkbox::after {
   content: "";
@@ -71,15 +70,14 @@ svg:active {
   align-items: center;
   height: 100%;
 }
+
 .todolist-container {
-  /* margin: 5rem auto; */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 6rem;
   background-color: #a1f7f7;
-  /* height: 100%; */
-  height: calc(100vh - 89px);
+  height: calc(100vh - 84px);
 }
 
 .input-container {
@@ -87,6 +85,7 @@ svg:active {
   justify-content: center;
   align-items: center;
 }
+
 .input-area {
   text-align: center;
   font-size: 2rem;
@@ -94,10 +93,20 @@ svg:active {
   width: 40rem;
   height: 4rem;
 }
+
 .add-button {
   height: 4rem;
   width: 4rem;
   font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.add-button-disabled {
+  height: 4rem;
+  width: 4rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  /* display: none; */
 }
 
 .add-button:hover {
@@ -126,27 +135,32 @@ svg:active {
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* height: auto; */
-  height: 30vh;
-  /* height: calc(100vh-50vh); */
-
+  max-height: 45vh;
   overflow: auto;
 }
+
 .task-container {
   display: flex;
   align-items: center;
 }
+
 .task-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 3rem;
   padding: 3rem 3rem;
-  margin: 2rem 4rem;
+  margin: 3rem 5rem;
   width: 100%;
   background-color: #cfa6f7;
   border: 5px solid #f7a6a6;
   border-radius: 20px;
+}
+
+.task-message {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
 }
 
 input[type="checkbox"]:checked + .custom-checkbox::after {
@@ -172,11 +186,13 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
 }
 
 .links {
+  display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   color: white;
   background-color: cadetblue;
+  height: 84px;
 }
 .links p {
   padding: 30px;
@@ -185,62 +201,8 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
 
 /* Media Queries */
 
-@media screen and (max-width: 375px) {
-  body {
-    width: 375px;
-    /* height: 100vh; */
-  }
-  .todolist {
-    /* margin: 1rem 0; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-  }
+/* Mobile devices (less than 768px) */
 
-  /* .task-section {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  } */
-  button {
-    width: 10rem;
-    font-size: 10px;
-  }
-  svg {
-    width: 25px;
-    height: 25px;
-  }
-
-  .filter-section {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  .input-area {
-    text-align: center;
-    font-size: 1rem;
-    width: 15rem;
-    height: 2rem;
-  }
-  .add-button {
-    width: 3rem;
-    height: 2rem;
-    font-size: 1rem;
-  }
-  .task-item {
-    font-size: 1rem;
-    width: 90%;
-    margin: 1rem;
-  }
-  .links p {
-    font-size: 15px;
-  }
-}
-
-/* Tablets and larger devices (768px and above) */
 @media screen and (min-width: 375px) and (max-width: 768px) {
   button {
     width: 10rem;
@@ -250,10 +212,19 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
     width: 25px;
     height: 25px;
   }
+  label {
+    font-size: 1.5rem;
+  }
   .custom-checkbox {
     width: 25px;
     height: 25px;
   }
+
+  /* .todolist-container {
+    display: flex;
+    justify-content: center;
+  } */
+
   .todolist {
     /* margin: 1rem 0; */
     display: flex;
@@ -267,32 +238,49 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
     width: 15rem;
     height: 2rem;
   }
-  .input-container {
+
+  .task-message {
+    font-size: 15px;
   }
+
+  .task-section {
+    width: 90%;
+    margin: 0 2rem;
+    padding-left: 2rem;
+  }
+
   .task-item {
     font-size: 1rem;
     width: 90%;
     margin: 1rem;
   }
 
-  .add-button {
+  .add-button,
+  .add-button-disabled {
     width: 3rem;
     height: 2rem;
     font-size: 1rem;
   }
 
+  /* .add-button-disabled {
+    width: 3rem;
+    height: 2rem;
+    font-size: 1rem;
+  } */
+
   .filter-section {
-    flex-direction: column;
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin: 2rem;
   }
   .links p {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
-/* Mobile devices (less than 768px) */
+/* Tablets and larger devices (768px and above) */
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .todolist {
     margin: 1rem 0;
@@ -315,10 +303,12 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
   .task-item {
     width: 83%;
   }
-
-  /* .links p {
-    width: calc(15px + (25px - 15) * ((100vw - 375px) / (1024 - 375)));
-  } */
+  .task-message {
+    font-size: 18px;
+  }
+  .links p {
+    font-size: 20px;
+  }
 }
 
 /* Larger screens (1024px and above) */
