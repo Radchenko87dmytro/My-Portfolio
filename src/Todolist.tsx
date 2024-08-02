@@ -22,28 +22,6 @@ export function Todolist(props: PropsType) {
   const [error, setError] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
 
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   // Ensure that the element exists and is of type HTMLInputElement
-  //   const inputElement = document.getElementById(
-  //     "input-area"
-  //   ) as HTMLInputElement;
-
-  //   if (inputElement) {
-  //     // Setting the maxLength property correctly
-  //     inputElement.maxLength = 6;
-
-  //     // Optional: Adding an event listener to handle input
-  //     inputElement.addEventListener("input", (event) => {
-  //       const target = event.target as HTMLInputElement;
-  //       const maxLength = 6;
-
-  //       if (target.value.length > maxLength) {
-  //         target.value = target.value.slice(0, maxLength);
-  //       }
-  //     });
-  //   }
-  // });
-
   document.addEventListener("DOMContentLoaded", () => {
     const inputElement = document.getElementById(
       "input-area"
@@ -61,13 +39,11 @@ export function Todolist(props: PropsType) {
   // Set status
   useEffect(() => {
     if (newTaskTitle.trim() === "") {
+      setError("Please type some text");
       setBtnDisabled(true);
-      setError("Type please the text");
-      //setNewTaskTitle("Type please the text");
-      // } else if (newTaskTitle.trim().length >= 20) {
-      //   setBtnDisabled(true);
-      //   setError("Text cannot be longer then 20 letter.");
-      // setNewTaskTitle("Text schould be schorter");
+    } else if (newTaskTitle.trim().length >= 20) {
+      setBtnDisabled(true);
+      setError("Text cannot be longer then 20 letters.");
     } else {
       setBtnDisabled(false);
       setError("");
@@ -102,13 +78,21 @@ export function Todolist(props: PropsType) {
             value={newTaskTitle}
             onChange={taskTitleHandler}
             placeholder="Add a new task..."
-
-            //maxlength="10"
-            // maxLength="6"
+            maxLength={20}
           />
+
+          {/* <div onClick={() => {
+              if (newTaskTitle.trim() === "") {
+                //setError("Please type some text");
+              }
+            }}  className={newTaskTitle.trim() === "" ? "btnOverlay" : ""}></div> */}
+
           <button
             className={btnDisabled ? "add-button-disabled" : "add-button"}
-            onClick={addTaskHandler}
+            onClick={(e) => {
+              e.stopPropagation();
+              addTaskHandler();
+            }}
             disabled={btnDisabled}
           >
             Add

@@ -94,6 +94,10 @@ svg:hover {
   height: 4rem;
 }
 
+input:invalid {
+  border: 3px solid red;
+}
+
 .add-button {
   height: 4rem;
   width: 4rem;
@@ -112,8 +116,20 @@ svg:hover {
 .add-button:hover {
   background-color: greenyellow;
 }
+
 .add-button:active {
   background-color: green;
+}
+
+.btnOverlay {
+  /* ustaw opacity na 1, zeby zobaczyc jak to wyglada */
+  opacity: 1;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  background-color: red;
+  text-decoration: line-through;
 }
 
 .filter-section {
@@ -204,6 +220,9 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
 /* Mobile devices (less than 768px) */
 
 @media screen and (min-width: 375px) and (max-width: 768px) {
+  body {
+    min-width: 375px;
+  }
   button {
     width: 10rem;
     font-size: 10px;
