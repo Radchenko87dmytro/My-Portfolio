@@ -1,33 +1,35 @@
 import { useState } from "react";
-import "./App.css";
+import "./AppHeader.css";
 import { Todolist, TaskType } from "./Todolist";
-import { v1 } from "uuid";
+//import { v1 } from "uuid";
 
 export type FilterValuesType = "all" | "completed" | "active";
 
 function App() {
-  const [tasks, setTasks] = useState<Array<TaskType>>([
-    { id: v1(), title: "CSS", isDone: true },
-    { id: v1(), title: "JS", isDone: true },
-    { id: v1(), title: "React", isDone: false },
-    { id: v1(), title: "Redux", isDone: false },
-  ]);
-
-  console.log(tasks);
+  const [tasks, setTasks] = useState<Array<TaskType>>(
+    localStorage.getItem("todoListTasks")
+      ? JSON.parse(localStorage.getItem("todoListTasks") || "[]")
+      : [
+          // { id: v1(), title: "CSS", isDone: true },
+          // { id: v1(), title: "JS", isDone: true },
+          // { id: v1(), title: "React", isDone: false },
+          // { id: v1(), title: "Redux", isDone: false },
+        ]
+  );
 
   const [filter, setFilter] = useState<FilterValuesType>("all");
 
-  function removeTask(id: string) {
-    //t.id !=== id
-    setTasks(tasks.filter((t) => t.id !== id));
-    //   console.log(filteredTasks);
+  function removeTask(id: number) {
+    let newTasks = tasks.filter((t) => t.id !== id);
+    setTasks(newTasks);
   }
 
   function addTask(title: string) {
-    let newTask = { id: v1(), title: title, isDone: false };
-    //newTask.id = tasks.length + 1
+    let newTask = { id: tasks.length + 1, title: title, isDone: false };
+
     let newTasks = [newTask, ...tasks];
     setTasks(newTasks);
+    localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
   }
 
   function changeFilter(value: FilterValuesType) {
@@ -42,12 +44,13 @@ function App() {
     tasksForTodolist = tasks.filter((t) => t.isDone === false);
   }
 
-  const changeStatus = (id: string, isDone: boolean) => {
+  const changeStatus = (id: number, isDone: boolean) => {
     let task = tasks.find((t) => t.id === id);
     if (task) {
       task.isDone = isDone;
     }
     setTasks([...tasks]);
+    localStorage.setItem("todoListTasks", JSON.stringify([...tasks]));
   };
 
   return (

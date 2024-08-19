@@ -1,19 +1,20 @@
-import "./App.css";
+//import "./AppHeader.css";
+import "./AppTasks.css";
 import { FilterValuesType } from "./App";
 import { ChangeEvent, useEffect, useState } from "react";
 
 export interface TaskType {
-  id: string;
+  id: number;
   title: string;
   isDone: boolean;
 }
 
 export interface PropsType {
   tasks: Array<TaskType>;
-  removeTask: (id: string) => void;
+  removeTask: (id: number) => void;
   changeFilter: (value: FilterValuesType) => void;
   addTask: (title: string) => void;
-  changeStatus: (id: string, isDone: boolean) => void;
+  changeStatus: (id: number, isDone: boolean) => void;
   filter: FilterValuesType;
 }
 
@@ -60,16 +61,13 @@ export function Todolist(props: PropsType) {
     setNewTaskTitle("");
   };
 
-  const removeTaskHandler = (id: string) => {
+  const removeTaskHandler = (id: number) => {
     props.removeTask(id);
   };
 
   return (
     <div className="todolist-container">
       <div>
-        {/* <label htmlFor="input-area" id="label">
-          What to learn
-        </label> */}
         <div className="input-container">
           <input
             className="input-area"
@@ -80,12 +78,6 @@ export function Todolist(props: PropsType) {
             placeholder="Add a new task..."
             maxLength={20}
           />
-
-          {/* <div onClick={() => {
-              if (newTaskTitle.trim() === "") {
-                //setError("Please type some text");
-              }
-            }}  className={newTaskTitle.trim() === "" ? "btnOverlay" : ""}></div> */}
 
           <button
             className={btnDisabled ? "add-button-disabled" : "add-button"}
@@ -150,7 +142,11 @@ export function Todolist(props: PropsType) {
                     checked={t.isDone}
                     onChange={onChangeHandler}
                   />
-                  <span>{t.title}</span>
+                  <span
+                    className={t.isDone === true ? "task-item-completed" : ""}
+                  >
+                    {t.title}
+                  </span>
                 </div>
 
                 <div
