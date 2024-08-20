@@ -10,10 +10,10 @@ function App() {
     localStorage.getItem("todoListTasks")
       ? JSON.parse(localStorage.getItem("todoListTasks") || "[]")
       : [
-          // { id: v1(), title: "CSS", isDone: true },
-          // { id: v1(), title: "JS", isDone: true },
-          // { id: v1(), title: "React", isDone: false },
-          // { id: v1(), title: "Redux", isDone: false },
+          { id: 1, title: "CSS", isDone: true },
+          { id: 2, title: "JS", isDone: true },
+          { id: 3, title: "React", isDone: false },
+          { id: 4, title: "Redux2", isDone: false },
         ]
   );
 

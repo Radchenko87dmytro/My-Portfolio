@@ -23,20 +23,6 @@ export function Todolist(props: PropsType) {
   const [error, setError] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const inputElement = document.getElementById(
-      "input-area"
-    ) as HTMLInputElement;
-    const labelElement = document.getElementById("label") as HTMLElement;
-
-    inputElement.reportValidity();
-    if (inputElement.validity.tooLong) {
-      labelElement.innerText = "Too many characters in the textarea.";
-    } else {
-      labelElement.innerText = "Input is valid…";
-    }
-  });
-
   // Set status
   useEffect(() => {
     if (newTaskTitle.trim() === "") {
@@ -67,6 +53,9 @@ export function Todolist(props: PropsType) {
 
   return (
     <div className="todolist-container">
+      <div>
+        <img src="../public/favicon.ico" alt="" />
+      </div>
       <div>
         <div className="input-container">
           <input
