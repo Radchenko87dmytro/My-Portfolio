@@ -53,8 +53,12 @@ export function Todolist(props: PropsType) {
 
   return (
     <div className="todolist-container">
-      <div>
+      <div className="todolist-log">
         <img src="../public/favicon.ico" alt="" />
+        <div>
+          <button style={{ height: "40px", fontSize: "20px" }}>Log In</button>
+          <button style={{ height: "40px", fontSize: "20px" }}>Log Out</button>
+        </div>
       </div>
       <div>
         <div className="input-container">
