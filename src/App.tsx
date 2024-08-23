@@ -10,18 +10,19 @@ function App() {
     localStorage.getItem("todoListTasks")
       ? JSON.parse(localStorage.getItem("todoListTasks") || "[]")
       : [
-          { id: 1, title: "CSS", isDone: true },
-          { id: 2, title: "JS", isDone: true },
-          { id: 3, title: "React", isDone: false },
-          { id: 4, title: "Redux2", isDone: false },
+          // { id: 1, title: "CSS", isDone: true },
+          // { id: 2, title: "JS", isDone: true },
+          // { id: 3, title: "React", isDone: false },
+          // { id: 4, title: "Redux2", isDone: false },
         ]
   );
-
+  console.log(tasks);
   const [filter, setFilter] = useState<FilterValuesType>("all");
 
   function removeTask(id: number) {
     let newTasks = tasks.filter((t) => t.id !== id);
     setTasks(newTasks);
+    localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
   }
 
   function addTask(title: string) {
@@ -38,10 +39,10 @@ function App() {
 
   let tasksForTodolist = tasks;
   if (filter === "completed") {
-    tasksForTodolist = tasks.filter((t) => t.isDone === true);
+    tasksForTodolist = tasks.filter((t) => t.isDone);
   }
   if (filter === "active") {
-    tasksForTodolist = tasks.filter((t) => t.isDone === false);
+    tasksForTodolist = tasks.filter((t) => !t.isDone);
   }
 
   const changeStatus = (id: number, isDone: boolean) => {

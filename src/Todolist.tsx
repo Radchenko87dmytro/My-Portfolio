@@ -36,7 +36,6 @@ export function Todolist(props: PropsType) {
       setError("");
     }
   }, [newTaskTitle]);
-  console.log(newTaskTitle);
 
   const taskTitleHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     setNewTaskTitle(event.currentTarget.value);
@@ -135,9 +134,7 @@ export function Todolist(props: PropsType) {
                     checked={t.isDone}
                     onChange={onChangeHandler}
                   />
-                  <span
-                    className={t.isDone === true ? "task-item-completed" : ""}
-                  >
+                  <span className={t.isDone ? "task-item-completed" : ""}>
                     {t.title}
                   </span>
                 </div>
