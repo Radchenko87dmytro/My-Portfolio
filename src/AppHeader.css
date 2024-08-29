@@ -73,8 +73,22 @@ svg:hover {
   display: flex;
   justify-content: end;
   margin-right: 150px;
-  background-color: blue;
+  /* background-color: blue; */
   width: 100%;
+}
+
+.button-log {
+  display: flex;
+}
+
+.button-log button {
+  width: 100px;
+  box-shadow: 4px 4px rgb(92, 89, 89);
+}
+
+.button-log button:hover {
+  background-color: greenyellow;
+  box-shadow: none;
 }
 
 .input-container {

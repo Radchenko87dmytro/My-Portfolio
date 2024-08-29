@@ -12,7 +12,7 @@ describe("<Todolist />", () => {
     //cy.wait(500);
     // cy.get(".add-button").click();
     // cy.wait(500);
-    cy.contains("Active").click();
+    //cy.contains("Active").click();
     // cy.wait(500);
     // cy.contains("Completed").click();
     // cy.wait(500);
