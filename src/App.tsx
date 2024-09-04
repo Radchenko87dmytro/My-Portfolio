@@ -26,8 +26,8 @@ function App() {
   }
 
   function addTask(title: string) {
-    let newTask = { id: tasks.length + 1, title: title, isDone: false };
-
+    let newTask = { id: Date.now(), title: title, isDone: false };
+    console.log(Date.now());
     let newTasks = [newTask, ...tasks];
     setTasks(newTasks);
     localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
