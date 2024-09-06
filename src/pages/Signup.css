@@ -1,0 +1,23 @@
+.signup-container a {
+  margin-bottom: 30px;
+  font-size: larger;
+  color: black;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: rgb(236, 162, 113);
+}
+a:hover {
+  background-color: greenyellow;
+  font-size: 20px;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(180, 198, 231);
+  height: 100vh;
+}

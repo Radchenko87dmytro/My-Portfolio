@@ -42,7 +42,9 @@ button {
 .filter-section button:hover {
   background-color: greenyellow;
 }
-
+a {
+  text-decoration: none;
+}
 svg {
   display: flex;
 }
