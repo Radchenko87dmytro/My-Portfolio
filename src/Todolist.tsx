@@ -2,6 +2,7 @@
 import "./AppTasks.css";
 import { FilterValuesType } from "./App";
 import { ChangeEvent, useEffect, useState } from "react";
+import AuthDetails from "./components/AuthDetails";
 
 export interface TaskType {
   id: number;
@@ -61,6 +62,7 @@ export function Todolist(props: PropsType) {
           <button style={{ height: "30px", fontSize: "20px" }}>
             <a href={`/signup`}>Signup</a>
           </button>
+          <AuthDetails />
         </div>
       </div>
       <div>
