@@ -1,5 +1,5 @@
-//import "./AppHeader.css";
-import "./AppTasks.css";
+import "./AppHeader.css";
+import "./Todolist.css";
 import { FilterValuesType } from "./App";
 import { ChangeEvent, useEffect, useState } from "react";
 import AuthDetails from "./components/AuthDetails";
@@ -54,17 +54,10 @@ export function Todolist(props: PropsType) {
   return (
     <div className="todolist-container">
       <div className="todolist-log">
-        <img src="../public/favicon.ico" alt="" />
-        <div className="button-log">
-          <button style={{ height: "30px", fontSize: "20px" }}>
-            <a href={`/login`}>Login </a>
-          </button>
-          <button style={{ height: "30px", fontSize: "20px" }}>
-            <a href={`/signup`}>Signup</a>
-          </button>
-          <AuthDetails />
-        </div>
+        {/* <img src="../public/favicon.ico" alt="" /> */}
+        <AuthDetails />
       </div>
+
       <div>
         <div className="input-container">
           <input

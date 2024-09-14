@@ -15,7 +15,7 @@ const Login: React.FC = () => {
 
   // Function to toggle password visibility
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    setShowPassword((prevState) => !prevState);
   };
 
   const onLogin = (e: React.FormEvent) => {
@@ -61,7 +61,7 @@ const Login: React.FC = () => {
                 <input
                   id="password"
                   name="password"
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? "text" : "passwor"}
                   value={password}
                   required
                   placeholder="Password"

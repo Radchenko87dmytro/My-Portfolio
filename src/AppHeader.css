@@ -64,17 +64,17 @@ svg:hover {
 .todolist-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  /* padding-top: 30px; */
-  background-color: #a1f7f7;
+  padding-top: 20px;
+  background-color: #99e9e9;
   height: calc(100vh - 84px);
 }
 
 .todolist-log {
   display: flex;
   justify-content: end;
-  margin-right: 150px;
+  margin-right: 100px;
   /* background-color: blue; */
   width: 100%;
 }

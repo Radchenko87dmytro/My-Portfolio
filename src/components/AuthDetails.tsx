@@ -45,12 +45,42 @@ const AuthDetails = () => {
   return (
     <div>
       {authUser ? (
-        <>
-          <p>{`Signed In as ${authUser.email}`}</p>
-          <button onClick={userSignout}>Sign Out</button>
-        </>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <p>Signed In as</p>
+          <p>{authUser.email}</p>
+          <button
+            style={{
+              width: "100px",
+              fontSize: "18px",
+              padding: "5px",
+              marginTop: "15px",
+            }}
+            onClick={userSignout}
+          >
+            Sign Out
+          </button>
+        </div>
       ) : (
-        <p>Signed Out</p>
+        <div className="logut-container">
+          <div className="button-log">
+            <button style={{ height: "30px", fontSize: "20px" }}>
+              <a href={`/login`}>Login </a>
+            </button>
+            <button style={{ height: "30px", fontSize: "20px" }}>
+              <a href={`/signup`}>Signup</a>
+            </button>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <p style={{ marginTop: "10px" }}>Signed Out</p>
+          </div>
+        </div>
       )}
     </div>
   );
