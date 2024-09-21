@@ -6,7 +6,7 @@ import AuthDetails from "./components/AuthDetails";
 import { User } from "firebase/auth";
 
 export interface TaskType {
-  id: number;
+  id: any;
   title: string;
   isDone: boolean;
 }

@@ -12,37 +12,26 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "./firebase";
-import { User } from "firebase/auth";
-import user from "./components/AuthDetails";
-import AuthDetails from "./components/AuthDetails";
-
-interface ToDoListProps {
-  user: User;
-}
 
 export type FilterValuesType = "all" | "completed" | "active";
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Array<TaskType>>(
-    localStorage.getItem("todoListTasks")
-      ? JSON.parse(localStorage.getItem("todoListTasks") || "[]")
-      : [
-          // { id: 1, title: "CSS", isDone: true },
-          // { id: 2, title: "JS", isDone: true },
-          // { id: 3, title: "React", isDone: false },
-          // { id: 4, title: "Redux2", isDone: false },
-        ]
+    // localStorage.getItem("todoListTasks")
+    //   ? JSON.parse(localStorage.getItem("todoListTasks") || "[]")
+    //   :
+    []
   );
 
-  const fetchTasks = async (userId: any) => {
-    const q = query(collection(db, "tasks"), where("userId", "==", userId));
-    const querySnapshot = await getDocs(q);
-    const userTasks: any = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    setTasks(userTasks);
-  };
+  // const fetchTasks = async (userId: any) => {
+  //   const q = query(collection(db, "tasks"), where("userId", "==", userId));
+  //   const querySnapshot = await getDocs(q);
+  //   const userTasks: any = querySnapshot.docs.map((doc) => ({
+  //     id: doc.id,
+  //     ...doc.data(),
+  //   }));
+  //   setTasks(userTasks);
+  // };
   //fetchTasks()
 
   console.log(tasks);
@@ -51,16 +40,23 @@ const App: React.FC = () => {
   function removeTask(id: number) {
     let newTasks = tasks.filter((t) => t.id !== id);
     setTasks(newTasks);
-    localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
+    //localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
   }
 
-  function addTask(title: string) {
+  const addTask = async (title: string) => {
     let newTask = { id: Date.now(), title: title, isDone: false };
     console.log(Date.now());
     let newTasks = [newTask, ...tasks];
     setTasks(newTasks);
-    localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
-  }
+    try {
+      const docRef = await addDoc(collection(db, "tasks"), newTask);
+      setTasks([...tasks, { ...newTask, id: docRef.id }]);
+    } catch (e) {
+      console.error("Error adding task: ", e);
+    }
+
+    //localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
+  };
 
   function changeFilter(value: FilterValuesType) {
     setFilter(value);
@@ -80,7 +76,7 @@ const App: React.FC = () => {
       task.isDone = isDone;
     }
     setTasks([...tasks]);
-    localStorage.setItem("todoListTasks", JSON.stringify([...tasks]));
+    //localStorage.setItem("todoListTasks", JSON.stringify([...tasks]));
   };
 
   return (
@@ -94,7 +90,9 @@ const App: React.FC = () => {
         filter={filter}
       />
       <div className="links">
-        <p>icons8.com</p>
+        <a href="https://icons8.com" target="_blank">
+          icons8.com
+        </a>
       </div>
     </div>
   );

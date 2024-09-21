@@ -150,6 +150,19 @@ input:invalid {
   background-color: green;
 }
 
+.links a {
+  display: flex;
+  align-items: center;
+  color: beige;
+  font-size: 20px;
+}
+
+.links a:hover {
+  background-color: cadetblue;
+  font-size: 25px;
+  color: rgb(166, 228, 85);
+}
+
 /* Media Queries */
 
 /* Mobile devices (less than 768px) */
