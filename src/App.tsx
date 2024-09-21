@@ -2,11 +2,27 @@ import { useEffect, useState } from "react";
 import "./AppHeader.css";
 import { Todolist, TaskType } from "./Todolist";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
+
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  onSnapshot,
+} from "firebase/firestore";
+import { db } from "./firebase";
+import { User } from "firebase/auth";
+import user from "./components/AuthDetails";
+import AuthDetails from "./components/AuthDetails";
+
+interface ToDoListProps {
+  user: User;
+}
 
 export type FilterValuesType = "all" | "completed" | "active";
 
-function App() {
+const App: React.FC = () => {
   const [tasks, setTasks] = useState<Array<TaskType>>(
     localStorage.getItem("todoListTasks")
       ? JSON.parse(localStorage.getItem("todoListTasks") || "[]")
@@ -17,6 +33,18 @@ function App() {
           // { id: 4, title: "Redux2", isDone: false },
         ]
   );
+
+  const fetchTasks = async (userId: any) => {
+    const q = query(collection(db, "tasks"), where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+    const userTasks: any = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setTasks(userTasks);
+  };
+  //fetchTasks()
+
   console.log(tasks);
   const [filter, setFilter] = useState<FilterValuesType>("all");
 
@@ -70,6 +98,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

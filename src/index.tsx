@@ -5,6 +5,7 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import user from "./components/AuthDetails";
 
 const router = createBrowserRouter([
   {

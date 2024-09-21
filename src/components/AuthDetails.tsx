@@ -1,25 +1,35 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { auth } from "../firebase";
-import { useNavigate } from "react-router";
 
-const AuthDetails = () => {
-  const [authUser, setAuthUser] = useState<any>(null);
+import { useNavigate } from "react-router";
+import { auth } from "../firebase";
+
+interface AuthDetailsProps {
+  setAuthUser: (user: User | null) => void; // Declare the type for setAuthUser prop
+}
+
+const AuthDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
+  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
+        setUser(user);
+        // setUser(user);
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        // ...
+
+        //navigate("/");
         console.log("uid", uid);
+        console.log(user);
       } else {
         setAuthUser(null);
+        setUser(null);
         // User is signed out
-        //navigate("/login");
+        navigate("/");
         console.log("user is logged out");
       }
     });
@@ -27,7 +37,7 @@ const AuthDetails = () => {
     // return () =>{
     //   listen()
     // }
-  }, []);
+  }, [setAuthUser]);
 
   const userSignout = () => {
     signOut(auth)
@@ -43,8 +53,10 @@ const AuthDetails = () => {
   };
 
   return (
+    //authUser={authUser}
+
     <div>
-      {authUser ? (
+      {user ? (
         <div
           style={{
             display: "flex",
@@ -54,7 +66,7 @@ const AuthDetails = () => {
           }}
         >
           <p>Signed In as</p>
-          <p>{authUser.email}</p>
+          <p>{user.email}</p>
           <button
             style={{
               width: "100px",

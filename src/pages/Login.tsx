@@ -61,19 +61,19 @@ const Login: React.FC = () => {
                 <input
                   id="password"
                   name="password"
-                  type={showPassword ? "text" : "passwor"}
+                  type="password" //{showPassword ? "text" : "password"}
                   value={password}
                   required
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button
+                {/* <button
                   className="show-password"
                   onClick={togglePasswordVisibility}
                   style={{ marginLeft: "10px" }}
                 >
                   {showPassword ? "Hide Password" : "Show Password"}
-                </button>
+                </button> */}
               </div>
             </div>
 
