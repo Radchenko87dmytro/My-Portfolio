@@ -49,7 +49,7 @@ const App: React.FC = () => {
     let newTasks = [newTask, ...tasks];
     setTasks(newTasks);
     try {
-      const docRef = await addDoc(collection(db, "tasks"), newTask);
+      const docRef = await addDoc(collection(db, "tasks"), { ...newTask });
       setTasks([...tasks, { ...newTask, id: docRef.id }]);
     } catch (e) {
       console.error("Error adding task: ", e);

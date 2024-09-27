@@ -5,6 +5,12 @@ describe("template spec", () => {
     cy.visit("http://localhost:3000/");
     cy.wait(1000);
 
+    //Login to app
+    cy.get("#log").click();
+    cy.get("#email-address").type("dima.mobil80@gmail.com");
+    cy.get("#password").type("68046flexvB");
+    cy.get(".login").click();
+
     //initial state
     cy.get("#input-area").should("be.empty");
     cy.get(".add-button-disabled").should("be.disabled");
@@ -51,5 +57,8 @@ describe("template spec", () => {
     // cy.get(".removeIcon").eq(0).click();
 
     cy.get(".task-item").should("not.exist");
+
+    //Sign-out from app
+    cy.get(".sign-out").click();
   });
 });

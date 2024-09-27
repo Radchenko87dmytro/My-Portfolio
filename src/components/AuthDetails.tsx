@@ -68,6 +68,7 @@ const AuthDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
           <p>Signed In as</p>
           <p>{user.email}</p>
           <button
+            className="sign-out"
             style={{
               width: "100px",
               fontSize: "18px",
@@ -83,7 +84,9 @@ const AuthDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         <div className="logut-container">
           <div className="button-log">
             <button style={{ height: "30px", fontSize: "20px" }}>
-              <a href={`/login`}>Login </a>
+              <a id="log" href={`/login`}>
+                Login{" "}
+              </a>
             </button>
             <button style={{ height: "30px", fontSize: "20px" }}>
               <a href={`/signup`}>Signup</a>

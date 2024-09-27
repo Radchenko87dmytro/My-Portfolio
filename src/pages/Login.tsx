@@ -61,7 +61,7 @@ const Login: React.FC = () => {
                 <input
                   id="password"
                   name="password"
-                  type="password" //{showPassword ? "text" : "password"}
+                  type="text" //{showPassword ? "text" : "password"}  // "text" "password"
                   value={password}
                   required
                   placeholder="Password"

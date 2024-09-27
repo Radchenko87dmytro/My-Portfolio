@@ -147,7 +147,7 @@ input:invalid {
 }
 
 .active-filter {
-  background-color: green;
+  background-color: rgb(198, 233, 198);
 }
 
 .links a {
