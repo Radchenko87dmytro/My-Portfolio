@@ -1,0 +1,57 @@
+form {
+  margin: 40px;
+}
+
+input {
+  font-size: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+}
+
+.sign-up {
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: rgb(236, 162, 113);
+}
+
+.sign-up:hover {
+  background-color: greenyellow;
+}
+
+/* .sign-in {
+  margin-top: 20px;
+} */
+
+.signup-container a {
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: black;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: rgb(236, 162, 113);
+}
+
+a:hover {
+  background-color: greenyellow;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: rgb(180, 198, 231);
+  height: 100vh;
+}
+
+.container {
+  margin-bottom: 20px;
+}

@@ -6,18 +6,19 @@ import AuthDetails from "./components/AuthDetails";
 import { User } from "firebase/auth";
 
 export interface TaskType {
-  id: any;
+  id: string;
   title: string;
   isDone: boolean;
 }
 
 export interface PropsType {
   tasks: Array<TaskType>;
-  removeTask: (id: number) => void;
+  removeTask: (id: string) => void;
   changeFilter: (value: FilterValuesType) => void;
   addTask: (title: string) => void;
-  changeStatus: (id: number, isDone: boolean) => void;
+  changeStatus: (id: string, isDone: boolean) => void;
   filter: FilterValuesType;
+  setUserId: React.Dispatch<React.SetStateAction<string | null>>; // Assuming userId can be null
 }
 
 export function Todolist(props: PropsType) {
@@ -49,9 +50,13 @@ export function Todolist(props: PropsType) {
     setNewTask("");
   };
 
-  const removeTaskHandler = (id: number) => {
+  const removeTaskHandler = (id: string) => {
     props.removeTask(id);
   };
+
+  // const setAuthUser = (userId:any) =>{
+  //   props.fetchTasks(userId)
+  // }
   // const authUser = (authUser:any)=>void{
   //  const authUser
   // }
@@ -60,7 +65,7 @@ export function Todolist(props: PropsType) {
     <div className="todolist-container">
       <div className="todolist-log">
         {/* <img src="../public/favicon.ico" alt="" /> */}
-        <AuthDetails setAuthUser={setAuthUser} />
+        <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} />
       </div>
 
       {authUser ? (

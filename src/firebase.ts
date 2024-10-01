@@ -8,12 +8,12 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDjwU9k6sn4pjVwn5NlKDiH4xhysHNSaa8",
-  authDomain: "todolisttsapp.firebaseapp.com",
-  projectId: "todolisttsapp",
-  storageBucket: "todolisttsapp.appspot.com",
-  messagingSenderId: "41847440996",
-  appId: "1:41847440996:web:d0f2f8b379d6fc4aa50171",
+  apiKey: "AIzaSyB2_sG0D1w8rETSil2YhlGWZMCqXW5Ik1M",
+  authDomain: "todolistnativemode.firebaseapp.com",
+  projectId: "todolistnativemode",
+  storageBucket: "todolistnativemode.appspot.com",
+  messagingSenderId: "1014286449827",
+  appId: "1:1014286449827:web:a5cb112fc7dc90c0fa5316",
 };
 
 // Initialize Firebase Authentication and get a reference to the service

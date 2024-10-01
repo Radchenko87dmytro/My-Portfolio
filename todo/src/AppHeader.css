@@ -1,0 +1,272 @@
+/* Canceling default styles 
+Header section
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General */
+
+body {
+  width: 100%;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+h2 {
+  padding: 8px 4px;
+}
+
+ul {
+  list-style-type: none;
+  background-color: azure;
+  /* padding: 1rem 0; */
+  border-radius: 20px;
+}
+
+button {
+  margin: 10px;
+  border-radius: 20px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.filter-section button:hover {
+  background-color: greenyellow;
+}
+a {
+  text-decoration: none;
+}
+svg {
+  display: flex;
+}
+
+svg:hover {
+  fill: red;
+  cursor: pointer;
+}
+
+.App {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.todolist-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding-top: 20px;
+  background-color: #99e9e9;
+  height: calc(100vh - 84px);
+}
+
+.todolist-log {
+  display: flex;
+  justify-content: end;
+  margin-right: 100px;
+  /* background-color: blue; */
+  width: 100%;
+}
+
+.button-log {
+  display: flex;
+}
+
+.button-log button {
+  width: 100px;
+  box-shadow: 4px 4px rgb(92, 89, 89);
+}
+
+.button-log button:hover {
+  background-color: greenyellow;
+  box-shadow: none;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-area {
+  text-align: center;
+  font-size: 28px;
+  border-radius: 20px;
+  width: 100%;
+  margin-right: 15px;
+  height: 58px;
+}
+
+input:invalid {
+  border: 3px solid red;
+}
+
+.add-button {
+  height: 58px;
+  width: 24%;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.add-button-disabled {
+  height: 58px;
+  width: 24%;
+  font-size: 28px;
+  cursor: pointer;
+  /* display: none; */
+}
+
+.add-button:hover {
+  background-color: greenyellow;
+}
+
+.add-button:active {
+  background-color: green;
+}
+
+.filter-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 18px;
+}
+
+.filter-button:hover {
+  background-color: greenyellow;
+}
+
+.active-filter {
+  background-color: rgb(198, 233, 198);
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  color: beige;
+  font-size: 20px;
+}
+
+.links a:hover {
+  background-color: cadetblue;
+  font-size: 25px;
+  color: rgb(166, 228, 85);
+}
+
+/* Media Queries */
+
+/* Mobile devices (less than 768px) */
+
+@media screen and (max-width: 768px) {
+  body {
+    min-width: 375px;
+  }
+
+  button {
+    width: 90px;
+    margin: 5px;
+    font-size: 8px;
+  }
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  h2 {
+    padding: 6px 3px;
+  }
+
+  .custom-checkbox {
+    width: 25px;
+    height: 25px;
+  }
+
+  .todolist-container {
+    padding-top: 10px;
+  }
+
+  .input-area {
+    text-align: center;
+    font-size: 15px;
+    width: 80%;
+    height: 28px;
+  }
+
+  .error {
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-size: 18px;
+  }
+
+  .errorHidden {
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-size: 18px;
+    opacity: 0;
+  }
+
+  .task-message {
+    font-size: 15px;
+  }
+
+  .task-section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 0px;
+  }
+
+  .task-item {
+    font-size: 20px;
+    width: 90%;
+  }
+
+  .add-button,
+  .add-button-disabled {
+    width: 15%;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .filter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 14px;
+  }
+}
+
+/* Tablets and larger devices (768px and above) */
+
+@media screen and (min-width: 768px) {
+  button {
+    margin: 5px;
+  }
+
+  .task-section {
+    width: 100%;
+  }
+
+  .task-item {
+    width: 100%;
+  }
+}
+
+/* Larger screens (1024px and above) */
+@media (min-width: 1024px) {
+  .task-item {
+    width: 100%;
+  }
+}

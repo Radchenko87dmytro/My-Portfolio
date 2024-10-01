@@ -6,9 +6,13 @@ import { auth } from "../firebase";
 
 interface AuthDetailsProps {
   setAuthUser: (user: User | null) => void; // Declare the type for setAuthUser prop
+  setUserId: React.Dispatch<React.SetStateAction<string | null>>; // Assuming userId can be null
 }
 
-const AuthDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
+const AuthDetails: React.FC<AuthDetailsProps> = ({
+  setAuthUser,
+  setUserId,
+}) => {
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
@@ -21,6 +25,7 @@ const AuthDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
+        setUserId(uid);
 
         //navigate("/");
         console.log("uid", uid);

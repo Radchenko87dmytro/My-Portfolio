@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AppHeader.css";
 import { Todolist, TaskType } from "./Todolist";
 import { onAuthStateChanged } from "firebase/auth";
-
 import {
   collection,
   addDoc,
@@ -10,9 +9,6 @@ import {
   where,
   getDocs,
   onSnapshot,
-  deleteDoc,
-  doc,
-  updateDoc,
 } from "firebase/firestore";
 import { db } from "./firebase";
 
@@ -22,10 +18,13 @@ const App: React.FC = () => {
   const [tasks, setTasks] = useState<Array<TaskType>>([]);
   const [userId, setUserId] = useState<string | null>(null);
   const [filter, setFilter] = useState<FilterValuesType>("all");
+
   const fetchTasks = async (userId: string) => {
     if (db) {
       // Query tasks for the specific user
       const q = query(collection(db, "tasks"));
+
+      // Listen for real-time updates
       const unsubscribe = onSnapshot(q, (snapshot) => {
         console.log("snapshot", snapshot);
         const userTasks: TaskType[] = snapshot.docs.map((doc) => ({
@@ -35,6 +34,7 @@ const App: React.FC = () => {
 
         setTasks(userTasks);
       });
+
       return unsubscribe; // Cleanup listener on unmount
     }
   };
@@ -45,68 +45,36 @@ const App: React.FC = () => {
     }
   }, [userId]);
 
-  const removeTask = async (id: string) => {
-    let newTasks = tasks.filter((t) => t.id !== id);
-    setTasks(newTasks);
-    //localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
-
-    // Remove task from Firestore
-    try {
-      const taskDocRef = doc(db, "tasks", id); // Reference the Firestore document by its ID
-      deleteDoc(taskDocRef);
-    } catch (error) {
-      console.error("Error removing task: ", error);
-    }
+  const removeTask = (id: number) => {
+    setTasks(tasks.filter((t) => t.id !== id));
   };
 
-  //localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
-  // };
-
   const addTask = async (title: string) => {
+    const newTask: TaskType = { id: Date.now(), title, isDone: false };
     try {
-      const docRef = await addDoc(collection(db, "tasks"), {
-        title,
-        isDone: false,
-        createdAt: new Date(),
-      });
-      console.log(docRef.id);
-      const newTask: TaskType = { id: docRef.id, title, isDone: false };
-
+      await addDoc(collection(db, "tasks"), newTask);
       setTasks([...tasks, newTask]);
     } catch (e) {
       console.error("Error adding task: ", e);
     }
   };
 
-  function changeFilter(value: FilterValuesType) {
+  const changeFilter = (value: FilterValuesType) => {
     setFilter(value);
-  }
+  };
+
+  const changeStatus = (id: number, isDone: boolean) => {
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, isDone } : task))
+    );
+  };
 
   let tasksForTodolist = tasks;
   if (filter === "completed") {
     tasksForTodolist = tasks.filter((t) => t.isDone);
-  }
-  if (filter === "active") {
+  } else if (filter === "active") {
     tasksForTodolist = tasks.filter((t) => !t.isDone);
   }
-
-  const changeStatus = async (id: string, isDone: boolean) => {
-    let task = tasks.find((t) => t.id === id);
-    if (task) {
-      task.isDone = isDone;
-    }
-    setTasks([...tasks]);
-    //localStorage.setItem("todoListTasks", JSON.stringify([...tasks]));
-    // Update the task's status in Firestore
-    try {
-      const taskDocRef = doc(db, "tasks", id); // Reference to the Firestore document by its ID
-      await updateDoc(taskDocRef, {
-        isDone: isDone, // Update the isDone field in Firestore
-      });
-    } catch (error) {
-      console.error("Error updating task status: ", error);
-    }
-  };
 
   return (
     <div className="App">
@@ -120,7 +88,7 @@ const App: React.FC = () => {
         setUserId={setUserId} // Pass the function to set user ID
       />
       <div className="links">
-        <a href="https://icons8.com" target="_blank">
+        <a href="https://icons8.com" target="_blank" rel="noopener noreferrer">
           icons8.com
         </a>
       </div>
