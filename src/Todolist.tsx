@@ -4,6 +4,8 @@ import { FilterValuesType } from "./App";
 import { ChangeEvent, useEffect, useState } from "react";
 import AuthDetails from "./components/AuthDetails";
 import { User } from "firebase/auth";
+import { Container, Navbar } from "react-bootstrap";
+import Login from "./pages/Login";
 
 export interface TaskType {
   id: string;
@@ -65,6 +67,7 @@ export function Todolist(props: PropsType) {
     <div className="todolist-container">
       <div className="todolist-log">
         {/* <img src="../public/favicon.ico" alt="" /> */}
+
         <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} />
       </div>
 

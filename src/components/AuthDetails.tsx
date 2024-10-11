@@ -1,8 +1,9 @@
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router";
 import { auth } from "../firebase";
+
+import { Button, Form } from "react-bootstrap";
 
 interface AuthDetailsProps {
   setAuthUser: (user: User | null) => void; // Declare the type for setAuthUser prop
