@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import "./Login.css";
+import "./Login.css";
 import { useNavigate } from "react-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -40,20 +40,20 @@ const Login: React.FC = () => {
     //<a href={`/`}>Back Home </a> <h2>Login</h2>
     //bg-slate-300
 
-    <div className="flex justify-center p-16 bg-slate-50">
-      <div className="flex min-h-full flex-col justify-center px-8 py-10 lg:px-24 border-2 rounded-md divide-gray-300 border-solid shadow-xl bg-white">
-        <div className="sm:mx-auto sm:w-full sm:max-w-xl ">
+    <div className="flex justify-center p-4 sm:p-8 md:p-16 bg-slate-50">
+      <div className="flex min-h-full flex-col justify-center px-4 py-6 sm:px-8 sm:py-10 lg:px-24 border-2 rounded-md divide-gray-300 border-solid shadow-xl bg-white">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md md:max-w-lg lg:max-w-xl ">
           <img
             className="mx-auto h-10 w-auto"
             src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
           />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-10 text-center text-lg font-bold leading-9 tracking-tight text-gray-900   md:text-2xl">
             Login to your Account
           </h2>
         </div>
 
-        <div className="mt-6 w-full sm:mx-auto sm:w-full xl:max-w-2xl  ">
+        <div className="mt-6 w-full sm:mx-auto sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl  ">
           {" "}
           {/* bg-black */}
           <form className="space-y-6" action="#" method="POST">
@@ -71,7 +71,9 @@ const Login: React.FC = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6 md:text-sm md:leading-7 
+lg:text-base lg:leading-8 
+xl:text-lg xl:leading-9"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -93,7 +95,9 @@ const Login: React.FC = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6 md:text-sm md:leading-7 
+lg:text-base lg:leading-8 
+xl:text-lg xl:leading-9"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -111,7 +115,7 @@ const Login: React.FC = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs sm:py-2 md:text-sm"
                 onClick={onLogin}
               >
                 Log in
@@ -122,7 +126,7 @@ const Login: React.FC = () => {
               No account yet?
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs sm:py-2 md:text-sm"
               >
                 <NavLink to="/signup" className="nav-link">
                   Sign up
@@ -133,7 +137,7 @@ const Login: React.FC = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs sm:py-2 md:text-sm"
               >
                 <NavLink to="/" className="nav-link">
                   Go home

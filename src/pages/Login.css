@@ -50,21 +50,28 @@ a:hover {
   background-color: greenyellow;
   font-size: 20px;
 }
- */
+ 
 .login-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* text-align: center; */
+  /* text-align: center; 
   align-items: center;
   background-color: rgb(247, 250, 255);
-  /* height: 100vh; */
-}
+  /* height: 100vh; 
+}*/
 
 /* .container {
   margin-bottom: 20px;
 } */
 
-.nav-link:hover {
+/* .nav-link:hover {
   background-color: none;
+} */
+
+@media (max-width: 640px) {
+  .sm\:text-xs {
+    font-size: 0.75rem /* 12px */;
+    line-height: 1rem /* 16px */;
+  }
 }
