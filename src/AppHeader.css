@@ -150,15 +150,18 @@ input:invalid {
   background-color: rgb(198, 233, 198);
 }
 
-.links a {
-  display: flex;
+.links {
+  /* display: flex;
+  width: 100;
   align-items: center;
-  color: beige;
-  font-size: 20px;
+  justify-content: space-around;
+  color: white;
+  background-color: cadetblue;
+  font-size: 20px; */
+  height: 84px;
 }
 
 .links a:hover {
-  background-color: cadetblue;
   font-size: 25px;
   color: rgb(166, 228, 85);
 }
@@ -194,6 +197,7 @@ input:invalid {
 
   .todolist-container {
     padding-top: 10px;
+    height: calc(100vh - 168px);
   }
 
   .input-area {
@@ -246,6 +250,11 @@ input:invalid {
     align-items: center;
     margin: 14px;
   }
+
+  .links {
+    height: 168px;
+    padding-bottom: 24px;
+  }
 }
 
 /* Tablets and larger devices (768px and above) */
@@ -253,6 +262,10 @@ input:invalid {
 @media screen and (min-width: 768px) {
   button {
     margin: 5px;
+  }
+
+  .todolist-container {
+    padding-top: 10px;
   }
 
   .task-section {

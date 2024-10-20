@@ -54,8 +54,6 @@ const Login: React.FC = () => {
         </div>
 
         <div className="mt-6 w-full sm:mx-auto sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl  ">
-          {" "}
-          {/* bg-black */}
           <form className="space-y-6" action="#" method="POST">
             <div>
               <label
@@ -71,9 +69,9 @@ const Login: React.FC = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6 md:text-sm md:leading-7 
-lg:text-base lg:leading-8 
-xl:text-lg xl:leading-9"
+                  className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6 md:text-sm md:leading-7 
+                  lg:text-base lg:leading-8 
+                  xl:text-lg xl:leading-9"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -95,7 +93,7 @@ xl:text-lg xl:leading-9"
                   type="password"
                   autoComplete="current-password"
                   required
-                  className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6 md:text-sm md:leading-7 
+                  className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6 md:text-sm md:leading-7 
 lg:text-base lg:leading-8 
 xl:text-lg xl:leading-9"
                   onChange={(e) => setPassword(e.target.value)}
@@ -115,7 +113,7 @@ xl:text-lg xl:leading-9"
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs sm:py-2 md:text-sm"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs md:py-3 md:text-sm"
                 onClick={onLogin}
               >
                 Log in
@@ -124,25 +122,25 @@ xl:text-lg xl:leading-9"
 
             <div>
               No account yet?
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs sm:py-2 md:text-sm"
-              >
-                <NavLink to="/signup" className="nav-link">
+              <NavLink to="/signup" className="nav-link">
+                <button
+                  type="submit"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs md:py-3 md:text-sm"
+                >
                   Sign up
-                </NavLink>
-              </button>
+                </button>
+              </NavLink>
             </div>
 
             <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs sm:py-2 md:text-sm"
-              >
-                <NavLink to="/" className="nav-link">
+              <NavLink to="/" className="nav-link">
+                <button
+                  type="submit"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs md:py-3 md:text-sm"
+                >
                   Go home
-                </NavLink>
-              </button>
+                </button>
+              </NavLink>
             </div>
           </form>
           <p className="mt-10 text-center text-sm text-gray-500">
@@ -155,83 +153,6 @@ xl:text-lg xl:leading-9"
             </a>
           </p>
         </div>
-        {/*
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-      
-
-        //////////////////////////////////////////
-
-      <section>
-        <div>
-          <h1> Login to your Account</h1>
-
-          <form>
-            <div className="email container">
-              <label htmlFor="email-address">Email address</label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                value={email}
-                required
-                placeholder="Email address"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div className="password container">
-              <label htmlFor="password">Password</label>
-              <div className="password-conteiner">
-                <input
-                  id="password"
-                  name="password"
-                  type="text" //{showPassword ? "text" : "password"}  // "text" "password"
-                  value={password}
-                  required
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                {/* <button
-                  className="show-password"
-                  onClick={togglePasswordVisibility}
-                  style={{ marginLeft: "10px" }}
-                >
-                  {showPassword ? "Hide Password" : "Show Password"}
-                </button> 
-              </div>
-             </div>
-
-            <div>
-              <button className="login" onClick={onLogin}>
-                Login
-              </button>
-            </div>
-          </form>
-
-          <p className="text-sm text-white text-center">
-            No account yet? <NavLink to="/signup">Sign up</NavLink>
-          </p>
-        </div>
-      </section> */}
       </div>
     </div>
   );

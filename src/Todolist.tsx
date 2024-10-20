@@ -1,11 +1,12 @@
 import "./AppHeader.css";
-import "./Todolist.css";
+//import "./Todolist.css";
 import { FilterValuesType } from "./App";
 import { ChangeEvent, useEffect, useState } from "react";
 import AuthDetails from "./components/AuthDetails";
 import { User } from "firebase/auth";
 import { Container, Navbar } from "react-bootstrap";
 import Login from "./pages/Login";
+import Header from "./components/Header";
 
 export interface TaskType {
   id: string;
@@ -66,13 +67,11 @@ export function Todolist(props: PropsType) {
   return (
     <div className="todolist-container">
       <div className="todolist-log">
-        {/* <img src="../public/favicon.ico" alt="" /> */}
-
         <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} />
       </div>
 
       {authUser ? (
-        <div>
+        <div className="w-1/2">
           <div className="input-container">
             <input
               className="input-area"
@@ -174,7 +173,10 @@ export function Todolist(props: PropsType) {
           </ul>
         </div>
       ) : (
-        <p>No user logged in</p>
+        <p className="flex flex-col justify-center items-center text-3xl font-serif italic font-bold bg-slate-400 w-full h-full sm:text-xs md:text-xl lg:text-2xl xl:text-3xl">
+          <p>Signed Out</p>
+          <p>No user logged in</p>
+        </p>
       )}
     </div>
   );
