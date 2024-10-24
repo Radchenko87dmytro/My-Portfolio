@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./Login.css";
+import React, { useEffect, useState } from "react";
+//import "./Login.css";
 import { useNavigate } from "react-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -11,7 +11,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
+  const [error, setError] = useState(false);
   // State to toggle password visibility
   const [showPassword, setShowPassword] = useState(false);
 
@@ -19,6 +19,14 @@ const Login: React.FC = () => {
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (email.match(/^[^@]+@[^@]+\.[^@]+$/) && password?.length > 5) {
+      setError(false);
+    } else {
+      setError(true);
+    }
+  }, [email, password]);
 
   const onLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,7 +56,7 @@ const Login: React.FC = () => {
             src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
           />
-          <h2 className="mt-10 text-center text-lg font-bold leading-9 tracking-tight text-gray-900   md:text-2xl">
+          <h2 className="mt-10 text-center font-bold leading-9 tracking-tight text-gray-900 text-sm md:text-xl lg:text-2xl">
             Login to your Account
           </h2>
         </div>
@@ -69,7 +77,7 @@ const Login: React.FC = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6 md:text-sm md:leading-7 
+                  className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-xs leading-5 sm:leading-6 md:text-sm md:leading-7 
                   lg:text-base lg:leading-8 
                   xl:text-lg xl:leading-9"
                   onChange={(e) => setEmail(e.target.value)}
@@ -93,7 +101,7 @@ const Login: React.FC = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xs sm:leading-6 md:text-sm md:leading-7 
+                  className="text-center block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-xs sm:text-sm leading-5 sm:leading-6 md:text-sm md:leading-7 
 lg:text-base lg:leading-8 
 xl:text-lg xl:leading-9"
                   onChange={(e) => setPassword(e.target.value)}
@@ -111,9 +119,16 @@ xl:text-lg xl:leading-9"
             </div>
 
             <div>
+              {error ? (
+                <p className="text-sm font-semibold text-rose-600 hover:text-rose-500">
+                  Incorrect email or password?
+                </p>
+              ) : (
+                <p></p>
+              )}
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs md:py-3 md:text-sm"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5  font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-xs sm:text-sm md:py-3 md:text-sm disabled:bg-slate-600 disabled:text-slate-500"
                 onClick={onLogin}
               >
                 Log in
@@ -125,7 +140,7 @@ xl:text-lg xl:leading-9"
               <NavLink to="/signup" className="nav-link">
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs md:py-3 md:text-sm"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-xs sm:text-sm md:py-3 md:text-sm"
                 >
                   Sign up
                 </button>
@@ -136,7 +151,7 @@ xl:text-lg xl:leading-9"
               <NavLink to="/" className="nav-link">
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:text-xs md:py-3 md:text-sm"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-xs sm:text-sm md:py-3 md:text-sm"
                 >
                   Go home
                 </button>

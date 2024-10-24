@@ -69,9 +69,10 @@ a:hover {
   background-color: none;
 } */
 
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .sm\:text-xs {
-    font-size: 0.75rem /* 12px */;
-    line-height: 1rem /* 16px */;
+    font-size: 0.75rem 12px ;
+    line-height: 1rem  16px;
   }
 }
+ */

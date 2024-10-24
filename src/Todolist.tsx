@@ -1,5 +1,5 @@
-import "./AppHeader.css";
-//import "./Todolist.css";
+//import "./AppHeader.css";
+import "./Todolist.css";
 import { FilterValuesType } from "./App";
 import { ChangeEvent, useEffect, useState } from "react";
 import AuthDetails from "./components/AuthDetails";
@@ -173,7 +173,7 @@ export function Todolist(props: PropsType) {
           </ul>
         </div>
       ) : (
-        <p className="flex flex-col justify-center items-center text-3xl font-serif italic font-bold bg-slate-400 w-full h-full sm:text-xs md:text-xl lg:text-2xl xl:text-3xl">
+        <p className="flex flex-col justify-center items-center font-serif italic font-bold bg-slate-400 w-full h-full  text-xs sm:text-sm md:text-xl lg:text-2xl xl:text-3xl">
           <p>Signed Out</p>
           <p>No user logged in</p>
         </p>

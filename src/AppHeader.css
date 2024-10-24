@@ -161,10 +161,10 @@ input:invalid {
   height: 84px;
 }
 
-.links a:hover {
+/* .links a:hover {
   font-size: 25px;
   color: rgb(166, 228, 85);
-}
+} */
 
 /* Media Queries */
 
@@ -253,7 +253,6 @@ input:invalid {
 
   .links {
     height: 168px;
-    padding-bottom: 24px;
   }
 }
 

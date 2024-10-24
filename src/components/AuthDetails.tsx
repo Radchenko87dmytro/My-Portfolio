@@ -120,7 +120,7 @@ const AuthDetails: React.FC<AuthDetailsProps> = ({
         </div>
       ) : (
         <div className="flex flex-col items-center">
-          <Header />
+          {/* <Header /> */}
           <div className="flex space-x-4 mb-4">
             <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300 text-lg">
               <a href="/login">Login</a>
