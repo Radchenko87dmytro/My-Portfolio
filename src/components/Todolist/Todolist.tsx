@@ -1,12 +1,7 @@
-//import "./AppHeader.css";
 import "./Todolist.css";
-import { FilterValuesType } from "./App";
+import { FilterValuesType } from "../../App";
 import { ChangeEvent, useEffect, useState } from "react";
-import AuthDetails from "./components/AuthDetails";
 import { User } from "firebase/auth";
-import { Container, Navbar } from "react-bootstrap";
-import Login from "./pages/Login";
-import Header from "./components/Header";
 
 export interface TaskType {
   id: string;
@@ -15,20 +10,32 @@ export interface TaskType {
 }
 
 export interface PropsType {
-  tasks: Array<TaskType>;
+  tasks: TaskType[];
   removeTask: (id: string) => void;
   changeFilter: (value: FilterValuesType) => void;
   addTask: (title: string) => void;
   changeStatus: (id: string, isDone: boolean) => void;
   filter: FilterValuesType;
-  setUserId: React.Dispatch<React.SetStateAction<string | null>>; // Assuming userId can be null
+  setUserId: (id: string | null) => void;
+  setAuthUser?: (user: User | null) => void; // Make setAuthUser optional
+  authUser: User | null;
 }
 
-export function Todolist(props: PropsType) {
+const Todolist: React.FC<PropsType> = ({
+  tasks,
+  removeTask,
+  changeFilter,
+  addTask,
+  changeStatus,
+  filter,
+  setUserId,
+  setAuthUser,
+  authUser, // Destructure authUser here
+}) => {
   const [newTask, setNewTask] = useState<string>("");
   const [error, setError] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
-  const [authUser, setAuthUser] = useState<User | null>(null);
+  // const [authUser, setAuthUser] = useState<User | null>(null);
 
   // Set status
   useEffect(() => {
@@ -49,29 +56,20 @@ export function Todolist(props: PropsType) {
   };
 
   const addTaskHandler = async () => {
-    props.addTask(newTask);
+    addTask(newTask);
     setNewTask("");
   };
 
   const removeTaskHandler = (id: string) => {
-    props.removeTask(id);
+    removeTask(id);
   };
-
-  // const setAuthUser = (userId:any) =>{
-  //   props.fetchTasks(userId)
-  // }
-  // const authUser = (authUser:any)=>void{
-  //  const authUser
-  // }
 
   return (
     <div className="todolist-container">
-      <div className="todolist-log">
-        <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} />
-      </div>
+      {/* <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} /> */}
 
       {authUser ? (
-        <div className="w-1/2">
+        <div className="item-container">
           <div className="input-container">
             <input
               className="input-area"
@@ -101,41 +99,47 @@ export function Todolist(props: PropsType) {
 
           <div className="filter-section">
             <button
-              className={props.filter === "all" ? "active-filter" : ""}
+              className={
+                filter === "all" ? "active-filter" : "not-active-filter"
+              }
               onClick={() => {
-                props.changeFilter("all");
+                changeFilter("all");
               }}
             >
               <h2> All</h2>
             </button>
             <button
-              className={props.filter === "active" ? "active-filter" : ""}
+              className={
+                filter === "active" ? "active-filter" : "not-active-filter"
+              }
               onClick={() => {
-                props.changeFilter("active");
+                changeFilter("active");
               }}
             >
               <h2>Active</h2>
             </button>
             <button
-              className={props.filter === "completed" ? "active-filter" : ""}
+              className={
+                filter === "completed" ? "active-filter" : "not-active-filter"
+              }
               onClick={() => {
-                props.changeFilter("completed");
+                changeFilter("completed");
               }}
             >
               <h2>Completed</h2>
             </button>
           </div>
           <ul className="task-section">
-            {props.tasks.length === 0 && (
+            {tasks.length === 0 && (
               <div className="task-message">
                 <p>You don't have any items on this list</p>
               </div>
             )}
-            {props.tasks.map((t) => {
+            {tasks.map((t) => {
               const onChangeHandler = (
                 event: React.ChangeEvent<HTMLInputElement>
               ) => {
-                props.changeStatus(t.id, event.currentTarget.checked);
+                changeStatus(t.id, event.currentTarget.checked);
               };
               return (
                 <div className="task-item" key={t.id}>
@@ -180,4 +184,6 @@ export function Todolist(props: PropsType) {
       )}
     </div>
   );
-}
+};
+
+export default Todolist;

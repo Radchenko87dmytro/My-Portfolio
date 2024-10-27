@@ -1,5 +1,5 @@
 import React from "react";
-import { Todolist } from "./Todolist";
+import Todolist from "./components/Todolist/Todolist";
 /// <reference types="cypress" />
 
 describe("<Todolist />", () => {

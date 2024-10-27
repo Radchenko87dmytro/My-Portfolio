@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./AppHeader.css";
-import { Todolist, TaskType } from "./Todolist";
+import "./App.css";
+import Todolist, { TaskType } from "./components/Todolist/Todolist";
 
 import {
   collection,
@@ -12,14 +12,19 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "./firebase";
-import Footer from "./Footer";
-
+import Footer from "./components/Footer";
+import { User } from "firebase/auth";
+import Header from "./components/Header";
 export type FilterValuesType = "all" | "completed" | "active";
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Array<TaskType>>([]);
   const [userId, setUserId] = useState<string | null>(null);
+  const [authUser, setAuthUser] = useState<User | null>(null);
   const [filter, setFilter] = useState<FilterValuesType>("all");
+
+  console.log(authUser);
+
   const fetchTasks = async (userId: string) => {
     if (db) {
       // Query tasks for the specific user
@@ -108,6 +113,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <Header setAuthUser={setAuthUser} setUserId={setUserId} />
       <Todolist
         tasks={tasksForTodolist}
         removeTask={removeTask}
@@ -116,8 +122,8 @@ const App: React.FC = () => {
         changeStatus={changeStatus}
         filter={filter}
         setUserId={setUserId} // Pass the function to set user ID
+        authUser={authUser}
       />
-
       <Footer />
     </div>
   );
