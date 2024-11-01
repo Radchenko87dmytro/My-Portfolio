@@ -211,7 +211,7 @@ svg:hover {
 
   .todolist-container {
     padding-top: 10px;
-    height: calc(100vh - 262px);
+    height: calc(100vh - 200px);
   }
 
   .item-container {
@@ -279,7 +279,7 @@ svg:hover {
   }
   .todolist-container {
     padding-top: 10px;
-    height: calc(100vh - 234px);
+    height: calc(100vh - 172px);
   }
 
   .task-section {

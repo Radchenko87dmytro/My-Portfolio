@@ -15,6 +15,7 @@ import { db } from "./firebase";
 import Footer from "./components/Footer";
 import { User } from "firebase/auth";
 import Header from "./components/Header";
+import HeaderTailwind from "./components/HeaderTailwind";
 export type FilterValuesType = "all" | "completed" | "active";
 
 const App: React.FC = () => {
@@ -113,7 +114,8 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Header setAuthUser={setAuthUser} setUserId={setUserId} />
+      <HeaderTailwind setAuthUser={setAuthUser} setUserId={setUserId} />
+      {/* <Header setAuthUser={setAuthUser} setUserId={setUserId} /> */}
       <Todolist
         tasks={tasksForTodolist}
         removeTask={removeTask}
