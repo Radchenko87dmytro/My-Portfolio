@@ -1,0 +1,271 @@
+/**/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.aboutMe {
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+svg {
+  /* fill: orange; */
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.containerAbout {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: rgb(143, 196, 248);
+}
+
+.about-me {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 70%;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 4rem 0;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
+
+.about-me-text {
+  font-size: 22px;
+  margin-bottom: 54px;
+}
+
+.container-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 45%;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  margin: 15px;
+  padding: 20px;
+  box-shadow: 7px 7px rgb(92, 89, 89);
+}
+
+.item-text {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-icon-container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  font-size: 3rem;
+  color: #e0933e;
+}
+
+.item-icon {
+  background-color: gray;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.item-icon-icons {
+  color: #e0933e;
+  background-color: gray;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.item-icon-icons:hover {
+  background-color: rgb(128, 204, 52);
+  width: 7rem;
+  height: 7rem;
+  transition: all 0.4s ease;
+}
+
+.item-icon:hover {
+  background-color: rgb(128, 204, 52);
+  font-size: 4rem;
+  transition: all 0.4s ease;
+}
+
+/* 
+Media queries 
+*/
+
+@media screen and (min-width: 375px) and (max-width: 488px) {
+  .links a {
+    margin-left: 10px;
+  }
+  .contact {
+    font-size: 15px;
+  }
+}
+
+/* 
+  Telefon
+  */
+
+@media screen and (max-width: 767px) {
+  .section {
+    padding: 4rem;
+    display: block;
+    flex-direction: column;
+  }
+
+  .section-info {
+    display: block;
+    flex-direction: column;
+    font-size: 20px;
+  }
+
+  .avatar-img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .item-text {
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-item {
+    width: 65%;
+  }
+
+  .item-icon {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+
+  .item-icon-icons {
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+  }
+  .item-icon :hover {
+    font-size: 2rem;
+  }
+
+  .svg-icons {
+    font-size: 1rem;
+  }
+
+  .svg-icons a {
+    margin: 0 1rem;
+  }
+
+  .contact {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .contact:hover {
+    font-size: 1rem;
+  }
+
+  .links a {
+    font-size: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+  }
+
+  .mail-phone_container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+  }
+}
+
+/* 
+  Media queries for hamburger responsibility 
+  */
+
+@media screen and (min-width: 800px) {
+  #hamburger {
+    display: none;
+  }
+  .header_items_min {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header_items {
+    display: none;
+  }
+  .header_container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+/* 
+  Tablet 
+  */
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .avatar-img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .section {
+    padding: 12rem;
+  }
+
+  .svg-icons {
+    font-size: 2rem;
+  }
+
+  .contact {
+    padding: 5px 10px;
+    font-size: 15px;
+  }
+}
+
+/* 
+  Desktop
+  */
+
+@media screen and (min-width: 1200px) {
+  .section {
+    display: flex;
+
+    justify-content: center;
+  }
+  .section-flex {
+    width: 60%;
+  }
+}

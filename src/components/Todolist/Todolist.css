@@ -1,35 +1,36 @@
 /* Tasks section */
 .todolist-container {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  background-color: #99e9e9;
+  background-color: #99e9e9; 
   align-items: center;
   padding-top: 20px;
-  height: calc(100vh - 84px);
+  height: calc(100vh - 84px);*/
 }
 
-.item-container {
-  width: 50%;
-}
+/*.item-container {
+   width: 50%; 
+}*/
 
 .input-container {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .input-area {
   text-align: center;
-  font-size: 28px;
+  /* font-size: 28px;
   border-radius: 20px;
+  
   width: 100%;
   margin-right: 15px;
-  height: 58px;
+  height: 58px; */
 }
 
-input:invalid {
+/* input:invalid {
   border: 3px solid red;
-}
+} */
 
 .add-button {
   height: 58px;
@@ -51,11 +52,11 @@ input:invalid {
 }
 
 .add-button:hover {
-  background-color: rgb(69, 224, 69);
+  /* background-color: rgb(69, 224, 69); */
 }
 
 .add-button:active {
-  background-color: green;
+  /* background-color: green; */
 }
 
 /* Error message section */
@@ -79,26 +80,28 @@ input:invalid {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin: 18px;
+  margin: 16px;
+  width: 98%;
 }
 
 .active-filter {
-  background-color: greenyellow;
-  box-shadow: 4px 4px rgb(24, 148, 20);
+  /* color: white; */
+  font-size: 20px;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+  /* box-shadow: 4px 4px rgb(24, 148, 20); */
 }
 
 .not-active-filter {
-  background-color: #b3adad;
-  box-shadow: 4px 4px rgb(92, 89, 89);
+  /* color: white; */
+  font-size: 20px;
+  /* background-color: #b3adad; */
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  /* box-shadow: 4px 4px rgb(92, 89, 89); */
 }
 
 .active-filter:hover {
-  background-color: rgb(69, 224, 69);
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
   transition-duration: 300ms;
-}
-
-.not-active-filter:hover {
-  background-color: rgb(69, 224, 69);
 }
 
 /* Task section */
@@ -130,9 +133,9 @@ input:invalid {
   padding: 20px;
   margin: 0 auto;
   margin-bottom: 12px;
-  background-color: #cfa6f7;
-  border: 5px solid #f7a6a6;
-  border-radius: 20px;
+  /* background-color: #cfa6f7; */
+  border: 3px solid black;
+  border-radius: 8px;
   /* overflow: hidden; */
 }
 
@@ -190,9 +193,9 @@ svg:hover {
   }
 
   button {
-    width: 90px;
+    /* width: 90px;
     margin: 5px;
-    font-size: 15px;
+    font-size: 15px; */
   }
 
   svg {
@@ -220,7 +223,7 @@ svg:hover {
 
   .input-area {
     text-align: center;
-    font-size: 15px;
+    /* font-size: 15px; */
     width: 80%;
     height: 28px;
   }

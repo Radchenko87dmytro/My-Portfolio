@@ -5,11 +5,16 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import AboutMe from "./pages/AboutMe";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/aboutme",
+    element: <AboutMe />,
   },
   { path: "/signup", element: <Signup /> },
   { path: "/login", element: <Login /> },

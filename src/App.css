@@ -25,14 +25,14 @@ h2 {
 
 ul {
   list-style-type: none;
-  background-color: azure;
+  /* background-color: azure; */
   padding: 1rem 0;
   border-radius: 20px;
 }
 
-button {
+/* button {
   margin: 10px;
-  border-radius: 20px;
+  border-radius: 8px;
   width: 100%;
   cursor: pointer;
-}
+} */

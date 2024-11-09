@@ -9,16 +9,14 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { AuthDetailsProps } from "./Header";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { auth } from "../firebase";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Todolist", href: "/", current: true },
+  { name: "About me", href: "/aboutme", current: false },
 ];
 
 function classNames(...classes: (string | undefined | null)[]): string {
@@ -31,11 +29,6 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
 }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -72,25 +65,8 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
         console.log(error);
       });
   };
-
-  const elementRef = useRef<HTMLDivElement>(null);
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      elementRef.current &&
-      !elementRef.current.contains(event.target as Node)
-    ) {
-      setIsDropdownOpen(false); // Hide element if clicked outside
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
+  //fnfnxcnh@mailsac.com
+  //123456
   console.log(user?.photoURL);
 
   return (
