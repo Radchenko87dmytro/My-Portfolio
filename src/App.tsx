@@ -117,10 +117,6 @@ const App: React.FC = () => {
       <HeaderTailwind setAuthUser={setAuthUser} setUserId={setUserId} />
       {/* <Header setAuthUser={setAuthUser} setUserId={setUserId} /> */}
 
-      <div>
-        <h1 className="bg-gray-600 text-white"> Great</h1>
-      </div>
-
       <Todolist
         tasks={tasksForTodolist}
         removeTask={removeTask}

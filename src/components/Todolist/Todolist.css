@@ -65,6 +65,7 @@
   justify-content: center;
   color: red;
   font-size: 26px;
+  margin-right: 100px;
 }
 
 .errorHidden {
@@ -78,10 +79,10 @@
 /* Filter section */
 .filter-section {
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin: 16px;
-  width: 98%;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+  margin: 10px 0px;
+  width: 100%;
 }
 
 .active-filter {
@@ -110,9 +111,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-height: 42vh;
+  max-height: 52vh;
   overflow: auto;
-  padding: 20px;
+  padding: 10px 10px 0px 0px;
 }
 
 .task-container {
@@ -130,8 +131,8 @@
   font-weight: 300;
   font-style: normal;
 
-  padding: 20px;
-  margin: 0 auto;
+  padding: 18px;
+  /* margin: 0 auto; */
   margin-bottom: 12px;
   /* background-color: #cfa6f7; */
   border: 3px solid black;
@@ -218,7 +219,7 @@ svg:hover {
   }
 
   .item-container {
-    width: 70%;
+    width: 100%;
   }
 
   .input-area {
@@ -250,13 +251,13 @@ svg:hover {
   .task-section {
     width: 100%;
     margin: 0 auto;
-    padding: 15px 0px;
+    padding: 10px 0px;
     /* height: 32vh; */
   }
 
   .task-item {
     font-size: 20px;
-    width: 90%;
+    width: 96%;
   }
 
   .add-button,
@@ -268,9 +269,8 @@ svg:hover {
 
   .filter-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin: 14px;
   }
 }
 
@@ -287,11 +287,22 @@ svg:hover {
 
   .task-section {
     width: 100%;
+    max-height: 42vh;
   }
 
   .task-item {
     width: 100%;
   }
+}
+
+@media screen and (max-height: 800px) {
+  .task-section {
+    max-height: 35vh;
+  }
+
+  /* .todolist-container {
+    height: calc(60vh);
+  } */
 }
 
 /* Larger screens (1024px and above) */

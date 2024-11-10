@@ -180,10 +180,10 @@ const Todolist: React.FC<PropsType> = ({
         /////////////////
 
         <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-7 min-h-[550px] rounded-xl">
-          <div className="flex justify-center items-center">
+          <div className="flex justify-between items-center ">
             {/*item-container */}
             <input
-              className="text-sm  md:text-3xl md:h-14  input-area bg-transparent border-black border-2  rounded-lg w-full mr-4  
+              className="text-sm  md:text-3xl md:h-14  input-area bg-transparent border-black border-2  rounded-lg w-full mr-4 py-4
                border-spacing-1"
               type="text"
               id="input-area"
@@ -196,8 +196,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 btnDisabled
-                  ? "text-sm w-20  px-4 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
-                  : "text-sm w-20  px-4 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
+                  ? "text-sm w-20  px-4 py-2 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
+                  : "text-sm w-20  px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
               }
               onClick={(e) => {
                 e.stopPropagation();
@@ -217,8 +217,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 filter === "all"
-                  ? "text-md w-20 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
-                  : "text-sm w-20  px-4 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
+                  ? "text-sm w-24  px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
+                  : "text-sm w-24 px-2 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
               }
               onClick={() => {
                 changeFilter("all");
@@ -229,8 +229,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 filter === "active"
-                  ? "text-mdw-20  bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
-                  : "text-sm w-20  px-4 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
+                  ? "text-sm w-24  px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
+                  : "text-sm w-24  px-2 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
               }
               onClick={() => {
                 changeFilter("active");
@@ -241,8 +241,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 filter === "completed"
-                  ? "text-md w-20  bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
-                  : "text-sm w-20  px-4 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
+                  ? "text-sm w-24  px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
+                  : "text-sm w-24  px-2 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
               }
               onClick={() => {
                 changeFilter("completed");
