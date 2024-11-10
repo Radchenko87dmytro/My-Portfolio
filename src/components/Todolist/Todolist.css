@@ -126,7 +126,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 28px;
-
+  background-color: white;
   font-family: "Kalam", cursive;
   font-weight: 300;
   font-style: normal;
@@ -135,7 +135,7 @@
   /* margin: 0 auto; */
   margin-bottom: 12px;
   /* background-color: #cfa6f7; */
-  border: 3px solid black;
+  border: 2px solid rgb(156, 142, 142);
   border-radius: 8px;
   /* overflow: hidden; */
 }
