@@ -24,8 +24,6 @@ const App: React.FC = () => {
   const [authUser, setAuthUser] = useState<User | null>(null);
   const [filter, setFilter] = useState<FilterValuesType>("all");
 
-  console.log(authUser);
-
   const fetchTasks = async (userId: string) => {
     if (db) {
       // Query tasks for the specific user

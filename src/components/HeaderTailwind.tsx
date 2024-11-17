@@ -48,7 +48,6 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
         setUser(null);
         // User is signed out
         navigate("/");
-        console.log("user is logged out");
       }
     });
   }, [setAuthUser]);
@@ -67,7 +66,6 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
   };
   //fnfnxcnh@mailsac.com
   //123456
-  console.log(user?.photoURL);
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -116,25 +114,25 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
             <button
               type="button"
-              className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="relative  p-1 text-white     focus:ring-offset-2 hover:text-gray-400"
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">View notifications</span>
-              <BellIcon aria-hidden="true" className="h-6 w-6" />
+              <BellIcon aria-hidden="true" className="h-5 w-5 sm:w-8 sm:h-8 " />
             </button>
 
             {/* Profile dropdown */}
             {!user ? (
-              <Menu as="div" className="relative ml-3">
+              <Menu as="div" className="relative ml-3 ">
                 <div>
-                  <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                  <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 ">
                     <span className="absolute -inset-1.5" />
                     <span className="sr-only">Open user menu</span>
                     <svg
-                      className="w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 text-white dark:text-white "
+                      className="w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 text-white dark:text-white hover:text-gray-400"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       width="34"
@@ -144,9 +142,9 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
                     >
                       <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                       />
                     </svg>
@@ -185,11 +183,28 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
                   <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <span className="absolute -inset-1.5" />
                     <span className="sr-only">Open user menu</span>
-                    <img
+                    <svg
+                      className="w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 text-white dark:text-white hover:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="34"
+                      height="34"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                    </svg>
+                    {/* <img
                       alt=""
                       src={user.photoURL || "/default-avatar.png"}
                       className="h-8 w-8 rounded-full"
-                    />
+                    /> */}
                   </MenuButton>
                 </div>
                 <MenuItems

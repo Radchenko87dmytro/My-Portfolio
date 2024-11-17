@@ -79,7 +79,7 @@
 /* Filter section */
 .filter-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   /* align-items: flex-end; */
   margin: 10px 0px;
   width: 100%;
@@ -125,13 +125,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 28px;
+  font-size: 25px;
   background-color: white;
-  font-family: "Kalam", cursive;
-  font-weight: 300;
+  font-family: "Roboto", serif;
+  /* font-family: "Kalam", cursive; */
+  font-weight: 400;
   font-style: normal;
 
-  padding: 18px;
+  padding: 15px;
   /* margin: 0 auto; */
   margin-bottom: 12px;
   /* background-color: #cfa6f7; */
@@ -156,8 +157,8 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
 
 .custom-checkbox {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   background-color: #fff;
   border: 2px solid #555;
   border-radius: 5px;
@@ -209,8 +210,8 @@ svg:hover {
   }
 
   .custom-checkbox {
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
   }
 
   .todolist-container {
