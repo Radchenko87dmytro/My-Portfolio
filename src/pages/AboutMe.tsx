@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AboutMe.css";
 import HeaderTailwind from "../components/HeaderTailwind";
+import { User } from "firebase/auth";
+import Footer from "../components/Footer";
 
 const AboutMe = () => {
+  const [userId, setUserId] = useState<string | null>(null);
+  const [authUser, setAuthUser] = useState<User | null>(null);
   return (
     <div className="aboutMe">
+      <HeaderTailwind
+        setAuthUser={setAuthUser}
+        setUserId={setUserId}
+      ></HeaderTailwind>
       <section id="skills" className="containerAbout">
         <div className="about-me">
           <p className="about-me-text">
@@ -113,6 +121,7 @@ const AboutMe = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

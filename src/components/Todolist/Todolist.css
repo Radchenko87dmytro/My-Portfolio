@@ -51,14 +51,6 @@
   /* display: none; */
 }
 
-.add-button:hover {
-  /* background-color: rgb(69, 224, 69); */
-}
-
-.add-button:active {
-  /* background-color: green; */
-}
-
 /* Error message section */
 .error {
   display: flex;
@@ -167,19 +159,6 @@ input[type="checkbox"]:checked + .custom-checkbox::after {
   margin-right: 10px;
 }
 
-/* .links {
-  height: 84px;
-} */
-
-/* .links p {
-  padding: 30px;
-  font-size: 20px;
-} */
-
-/* svg {
-  display: flex;
-} */
-
 svg:hover {
   fill: red;
   cursor: pointer;
@@ -192,12 +171,6 @@ svg:hover {
 @media screen and (max-width: 768px) {
   body {
     min-width: 375px;
-  }
-
-  button {
-    /* width: 90px;
-    margin: 5px;
-    font-size: 15px; */
   }
 
   svg {

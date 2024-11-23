@@ -3,6 +3,8 @@ import { FilterValuesType } from "../../App";
 import { ChangeEvent, useEffect, useState } from "react";
 import { User } from "firebase/auth";
 
+// document.cookie = "key=value; SameSite=Strict; Secure";
+
 export interface TaskType {
   id: string;
   title: string;
@@ -191,7 +193,7 @@ const Todolist: React.FC<PropsType> = ({
         </div>
       ) : (
         <p className="flex flex-col justify-center items-center font-serif italic font-bold bg-slate-400 w-full h-full  text-xs sm:text-sm md:text-xl lg:text-2xl xl:text-3xl">
-          <p>Signed Out. No user logged in</p>
+          Signed Out. No user logged in
         </p>
       )}
     </div>
