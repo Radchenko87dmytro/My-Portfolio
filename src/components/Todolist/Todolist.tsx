@@ -67,11 +67,11 @@ const Todolist: React.FC<PropsType> = ({
   };
 
   return (
-    <div className="todolist-container bg-gray-500">
+    <div className="todolist-container flex justify-center items-center todolist-container bg-gray-500">
       {/* <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} /> */}
 
       {authUser ? (
-        <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-7 min-h-[550px] rounded-xl">
+        <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-5 min-h-[550px] rounded-xl">
           <div className="flex justify-between items-center ">
             {/*item-container */}
             <input
@@ -110,8 +110,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 filter === "all"
-                  ? "text-sm w-24  px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
-                  : "text-sm w-24 px-2 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-6/12 md:h-14"
+                  ? "text-xs w-16  mx-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9"
+                  : "text-xs w-16  mx-2 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9"
               }
               onClick={() => {
                 changeFilter("all");
@@ -122,8 +122,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 filter === "active"
-                  ? "text-sm w-24  px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
-                  : "text-sm w-24  px-2 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
+                  ? "text-xs w-16  mx-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9"
+                  : "text-xs w-16  mx-2 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9"
               }
               onClick={() => {
                 changeFilter("active");
@@ -134,8 +134,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 filter === "completed"
-                  ? "text-sm w-24  px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
-                  : "text-sm w-24  px-2 py-1 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
+                  ? "text-xs w-16  mx-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9"
+                  : "text-xs w-16  mx-2 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9"
               }
               onClick={() => {
                 changeFilter("completed");

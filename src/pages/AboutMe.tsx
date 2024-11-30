@@ -9,10 +9,10 @@ const AboutMe = () => {
   const [authUser, setAuthUser] = useState<User | null>(null);
   return (
     <div className="aboutMe">
-      <HeaderTailwind
+      {/* <HeaderTailwind
         setAuthUser={setAuthUser}
         setUserId={setUserId}
-      ></HeaderTailwind>
+      ></HeaderTailwind> */}
       <section id="skills" className="containerAbout">
         <div className="about-me">
           <p className="about-me-text">
@@ -121,7 +121,6 @@ const AboutMe = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };

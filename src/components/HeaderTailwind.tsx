@@ -8,36 +8,46 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { AuthDetailsProps } from "./Header";
-import { useEffect, useState } from "react";
+// import { AuthDetailsProps } from "./Header";
+import { useEffect, useMemo, useState } from "react";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { auth } from "../firebase";
+import { useAuth } from "./AuthContext";
+
+interface AuthDetailsProps {
+  setAuthUser: (user: User | null) => void; // Declare the type for setAuthUser prop
+  setUserId: (id: string | null) => void; // Assuming userId can be null
+}
 
 function classNames(...classes: (string | undefined | null)[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-const HeaderTailwind: React.FC<AuthDetailsProps> = ({
-  setAuthUser,
-  setUserId,
-}) => {
-  const navigate = useNavigate();
+const HeaderTailwind: React.FC = () => {
+  // const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
   const [currentTodolist, setCurrentTodolist] = useState(true);
-  const [currentAboutMe, setCurrentAboutMe] = useState(false);
+
+  const [clikcEvent, setClickEvent] = useState(false);
+  const { authUser, setAuthUser, userId, setUserId } = useAuth();
 
   const navigation = [
     { name: "Todolist", href: "/", current: currentTodolist },
-    { name: "About me", href: "/aboutme", current: currentAboutMe },
+    { name: "AboutMe", href: "/aboutme", current: !currentTodolist },
   ];
+  console.log(currentTodolist);
 
-  const currentHandler = () => {
+  const currentHandler = (e: any) => {
+    e.preventDefault();
+
     setCurrentTodolist(!currentTodolist);
-    setCurrentAboutMe(!currentAboutMe);
+    // setClickEvent(true);
   };
 
   useEffect(() => {
+    //setCurrentTodolist(currentTodolist);
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
@@ -54,16 +64,16 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
         setAuthUser(null);
         setUser(null);
         // User is signed out
-        navigate("/");
+        // navigate("/");
       }
     });
-  }, [setAuthUser]);
+  }, [setAuthUser, currentTodolist]);
 
   const userSignout = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/");
+        // navigate("/");
         console.log("Signed out successfully");
       })
       .catch((error) => {
@@ -108,7 +118,7 @@ const HeaderTailwind: React.FC<AuthDetailsProps> = ({
                     key={item.name}
                     href={item.href}
                     aria-current={item.current ? "page" : undefined}
-                    onClick={currentHandler}
+                    onClick={() => currentHandler}
                     className={classNames(
                       item.current
                         ? "bg-gray-900 text-white"

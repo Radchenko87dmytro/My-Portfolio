@@ -1,11 +1,18 @@
 /* Tasks section */
 .todolist-container {
-  /* display: flex;
-  flex-direction: column;
+  /*display: flex;
+  align-items: center;
+  justify-content: center;
+   flex-direction: column;
   background-color: #99e9e9; 
   align-items: center;
   padding-top: 20px;
-  height: calc(100vh - 84px);*/
+  height: calc(100vh - 84px); */
+  position: static;
+
+  top: 0;
+  z-index: -1;
+  /* position: static; */
 }
 
 /*.item-container {
@@ -79,8 +86,8 @@
 
 .active-filter {
   /* color: white; */
-  font-size: 20px;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+  /* font-size: 20px;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity)); */
   /* box-shadow: 4px 4px rgb(24, 148, 20); */
 }
 
@@ -103,7 +110,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-height: 52vh;
+  max-height: 42vh;
   overflow: auto;
   padding: 10px 10px 0px 0px;
 }
@@ -243,8 +250,10 @@ svg:hover {
 
   .filter-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
+    /* margin: 10px 0px;
+    width: 100%; */
   }
 }
 

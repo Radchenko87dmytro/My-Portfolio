@@ -16,12 +16,14 @@ import Footer from "./components/Footer";
 import { User } from "firebase/auth";
 import Header from "./components/Header";
 import HeaderTailwind from "./components/HeaderTailwind";
+import { useAuth } from "./components/AuthContext";
 export type FilterValuesType = "all" | "completed" | "active";
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Array<TaskType>>([]);
-  const [userId, setUserId] = useState<string | null>(null);
-  const [authUser, setAuthUser] = useState<User | null>(null);
+  // const [userId, setUserId] = useState<string | null>(null);
+  // const [authUser, setAuthUser] = useState<User | null>(null);
+  const { authUser, setAuthUser, userId, setUserId } = useAuth();
   const [filter, setFilter] = useState<FilterValuesType>("all");
 
   const fetchTasks = async (userId: string) => {
@@ -112,7 +114,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <HeaderTailwind setAuthUser={setAuthUser} setUserId={setUserId} />
+      {/* <HeaderTailwind setAuthUser={setAuthUser} setUserId={setUserId} /> */}
       {/* <Header setAuthUser={setAuthUser} setUserId={setUserId} /> */}
 
       <Todolist
@@ -125,7 +127,6 @@ const App: React.FC = () => {
         setUserId={setUserId} // Pass the function to set user ID
         authUser={authUser}
       />
-      <Footer />
     </div>
   );
 };

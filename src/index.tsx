@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AboutMe from "./pages/AboutMe";
+import Footer from "./components/Footer";
+import { AuthProvider } from "./components/AuthContext";
+import HeaderTailwind from "./components/HeaderTailwind";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <HeaderTailwind />
+      <RouterProvider router={router} />
+      <Footer />
+    </AuthProvider>
   </React.StrictMode>
 );
