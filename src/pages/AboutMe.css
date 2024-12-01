@@ -1,4 +1,6 @@
-/**/
+/*
+General 
+ */
 
 * {
   margin: 0;
@@ -6,19 +8,83 @@
   box-sizing: border-box;
 }
 
-.aboutMe {
+html {
   scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
-  height: auto;
 }
 
 a {
   text-decoration: none;
 }
 
-svg {
-  /* fill: orange; */
+/* svg {
+  height: 70px;
+  width: 70px;
+} */
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
+.body {
+  font-family: "Poppins", sans-serif;
+  height: auto;
+}
+
+/* 
+Section with avatar and info
+*/
+.aboutMe {
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  height: auto;
+}
+
+.section {
+  background: url("/public/Screenshot\ 2024-06-13\ 012334.jpg") no-repeat; /*center */
+  background-size: cover;
+  padding: 4rem;
+  height: 100%;
+}
+
+.section-flex {
+  display: flex;
+  flex-direction: column;
+  background-color: slateblue;
+  border-radius: 20px;
+  padding: 10vh 5%;
+}
+
+.section-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-img {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 20px;
+}
+
+.section-info {
+  flex: 60%;
+  padding-top: 40px;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  font-size: 30px;
+  /*  text responsive styles */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 
+Section with skills 
+*/
 
 .roboto-regular {
   font-family: "Roboto", sans-serif;
@@ -44,7 +110,7 @@ svg {
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding: 4rem 0;
+  padding: 2rem 0;
   flex-wrap: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -87,29 +153,29 @@ svg {
 }
 
 .item-icon {
-  background-color: gray;
+  /* background-color: gray; */
   padding: 2rem;
   border-radius: 1rem;
 }
 
 .item-icon-icons {
   color: #e0933e;
-  background-color: gray;
-  padding: 1rem;
+  /* background-color: gray; */
+  /* padding: 1rem; */
   border-radius: 1rem;
 }
 
 .item-icon-icons:hover {
-  background-color: rgb(128, 204, 52);
-  width: 7rem;
-  height: 7rem;
-  transition: all 0.4s ease;
+  /* width: 5rem;
+  height: 5rem;
+  transition: all 0.4s ease; */
 }
 
 .item-icon:hover {
-  background-color: rgb(128, 204, 52);
   font-size: 4rem;
-  transition: all 0.4s ease;
+  transition: all 2s ease;
+  width: 5rem;
+  height: 5rem;
 }
 
 /* 
@@ -123,6 +189,11 @@ Media queries
   .contact {
     font-size: 15px;
   }
+
+  /* svg {
+    height: 30px;
+    width: 30px;
+  } */
 }
 
 /* 
@@ -164,26 +235,27 @@ Media queries
   }
 
   .item-icon {
-    font-size: 2rem;
+    /* font-size: 2rem;
     padding: 1rem;
+    */
   }
 
   .item-icon-icons {
-    width: 4rem;
-    height: 4rem;
-    padding: 1rem;
+    /* width: 2rem;
+    height: 2rem; */
+    /* padding: 1rem; */
   }
   .item-icon :hover {
     font-size: 2rem;
   }
 
-  .svg-icons {
+  /* .svg-icons {
     font-size: 1rem;
-  }
+  } */
 
-  .svg-icons a {
+  /* .svg-icons a {
     margin: 0 1rem;
-  }
+  } */
 
   .contact {
     padding: 5px 10px;
@@ -205,29 +277,6 @@ Media queries
     justify-content: center;
     text-align: center;
     font-size: 15px;
-  }
-}
-
-/* 
-  Media queries for hamburger responsibility 
-  */
-
-@media screen and (min-width: 800px) {
-  #hamburger {
-    display: none;
-  }
-  .header_items_min {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .header_items {
-    display: none;
-  }
-  .header_container {
-    display: flex;
-    justify-content: flex-end;
   }
 }
 
