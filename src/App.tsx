@@ -17,6 +17,9 @@ import { User } from "firebase/auth";
 import Header from "./components/Header";
 import HeaderTailwind from "./components/HeaderTailwind";
 import { useAuth } from "./components/AuthContext";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AboutMe from "./pages/AboutMe";
+import Login from "./pages/Login";
 export type FilterValuesType = "all" | "completed" | "active";
 
 const App: React.FC = () => {
@@ -114,19 +117,31 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      {/* <HeaderTailwind setAuthUser={setAuthUser} setUserId={setUserId} /> */}
+      {/*  setAuthUser={setAuthUser} setUserId={setUserId} */}
       {/* <Header setAuthUser={setAuthUser} setUserId={setUserId} /> */}
 
-      <Todolist
-        tasks={tasksForTodolist}
-        removeTask={removeTask}
-        changeFilter={changeFilter}
-        addTask={addTask}
-        changeStatus={changeStatus}
-        filter={filter}
-        setUserId={setUserId} // Pass the function to set user ID
-        authUser={authUser}
-      />
+      <BrowserRouter>
+        <HeaderTailwind />
+        <Routes>
+          <Route path="/aboutme" element={<AboutMe />} />
+          <Route
+            path="/"
+            element={
+              <Todolist
+                tasks={tasksForTodolist}
+                removeTask={removeTask}
+                changeFilter={changeFilter}
+                addTask={addTask}
+                changeStatus={changeStatus}
+                filter={filter}
+                setUserId={setUserId} // Pass the function to set user ID
+                authUser={authUser}
+              />
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

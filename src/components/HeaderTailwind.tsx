@@ -14,6 +14,7 @@ import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { auth } from "../firebase";
 import { useAuth } from "./AuthContext";
+import { Link } from "react-router-dom";
 
 interface AuthDetailsProps {
   setAuthUser: (user: User | null) => void; // Declare the type for setAuthUser prop
@@ -27,23 +28,22 @@ function classNames(...classes: (string | undefined | null)[]): string {
 const HeaderTailwind: React.FC = () => {
   // const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
-  const [currentTodolist, setCurrentTodolist] = useState(true);
+  const [current, setCurrent] = useState<string>("aboutme");
+
+  // const handleNavigation = (path: string, name: string) => {
+  //   setCurrent(name); // Update the active state
+  //   navigate(path); // Navigate to the route
+  // };
 
   const [clikcEvent, setClickEvent] = useState(false);
   const { authUser, setAuthUser, userId, setUserId } = useAuth();
 
-  const navigation = [
-    { name: "Todolist", href: "/", current: currentTodolist },
-    { name: "AboutMe", href: "/aboutme", current: !currentTodolist },
-  ];
-  console.log(currentTodolist);
-
-  const currentHandler = (e: any) => {
-    e.preventDefault();
-
-    setCurrentTodolist(!currentTodolist);
-    // setClickEvent(true);
-  };
+  // const navigation = [
+  //   { name: "AboutMe", href: "/aboutme", current: "aboutme" },
+  //   { name: "Todolist", href: "/", current: "todolist" },
+  //   // { name: "Next Project", href: "/next", current: undefined },
+  // ];
+  console.log(current);
 
   useEffect(() => {
     //setCurrentTodolist(currentTodolist);
@@ -67,7 +67,7 @@ const HeaderTailwind: React.FC = () => {
         // navigate("/");
       }
     });
-  }, [setAuthUser, currentTodolist]);
+  }, [setAuthUser]);
 
   const userSignout = () => {
     signOut(auth)
@@ -113,22 +113,37 @@ const HeaderTailwind: React.FC = () => {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    aria-current={item.current ? "page" : undefined}
-                    onClick={() => currentHandler}
-                    className={classNames(
-                      item.current
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "rounded-md px-3 py-2 text-lg font-medium"
-                    )}
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                <Link
+                  to="/aboutme"
+                  // key={item.name}
+                  // href="/aboutme"
+                  // aria-current={item.current ? "page" : undefined}
+                  onClick={() => setCurrent("aboutme")}
+                  className={classNames(
+                    current === "aboutme"
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "rounded-md px-3 py-2 text-lg font-medium"
+                  )}
+                >
+                  AboutMe
+                </Link>
+                <Link
+                  to="/"
+                  onClick={() => setCurrent("todolist")}
+                  // key={item.name}
+                  // href="/"
+                  // aria-current={item.current ? "page" : undefined}
+                  // onClick={() => handleNavigation("/", "todolist")}
+                  className={classNames(
+                    current === "todolist"
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "rounded-md px-3 py-2 text-lg font-medium"
+                  )}
+                >
+                  Todolist
+                </Link>
               </div>
             </div>
           </div>
@@ -250,7 +265,7 @@ const HeaderTailwind: React.FC = () => {
         </div>
       </div>
 
-      <DisclosurePanel className="sm:hidden">
+      {/* <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pb-3 pt-2">
           {navigation.map((item) => (
             <DisclosureButton
@@ -269,7 +284,7 @@ const HeaderTailwind: React.FC = () => {
             </DisclosureButton>
           ))}
         </div>
-      </DisclosurePanel>
+      </DisclosurePanel> */}
     </Disclosure>
   );
 };

@@ -10,18 +10,18 @@ import Footer from "./components/Footer";
 import { AuthProvider } from "./components/AuthContext";
 import HeaderTailwind from "./components/HeaderTailwind";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/aboutme",
-    element: <AboutMe />,
-  },
-  { path: "/signup", element: <Signup /> },
-  { path: "/login", element: <Login /> },
-]);
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//   },
+//   {
+//     path: "/aboutme",
+//     element: <AboutMe />,
+//   },
+//   { path: "/signup", element: <Signup /> },
+//   { path: "/login", element: <Login /> },
+// ]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -29,8 +29,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <HeaderTailwind />
-      <RouterProvider router={router} />
+      <App></App>
+      {/* <HeaderTailwind /> */}
+      {/* <RouterProvider router={router} /> */}
       <Footer />
     </AuthProvider>
   </React.StrictMode>
