@@ -20,6 +20,7 @@ import { useAuth } from "./components/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AboutMe from "./pages/AboutMe";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 export type FilterValuesType = "all" | "completed" | "active";
 
 const App: React.FC = () => {
@@ -123,9 +124,9 @@ const App: React.FC = () => {
       <BrowserRouter>
         <HeaderTailwind />
         <Routes>
-          <Route path="/aboutme" element={<AboutMe />} />
+          <Route path="/" element={<AboutMe />} />
           <Route
-            path="/"
+            path="/todolist"
             element={
               <Todolist
                 tasks={tasksForTodolist}
@@ -140,6 +141,7 @@ const App: React.FC = () => {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -2,6 +2,8 @@ import "./Todolist.css";
 import { FilterValuesType } from "../../App";
 import { ChangeEvent, useEffect, useState } from "react";
 import { User } from "firebase/auth";
+import { props } from "cypress/types/bluebird";
+import { EditableSpan } from "../EditableSpan";
 
 // document.cookie = "key=value; SameSite=Strict; Secure";
 
@@ -21,6 +23,7 @@ export interface PropsType {
   setUserId: (id: string | null) => void;
   setAuthUser?: (user: User | null) => void; // Make setAuthUser optional
   authUser: User | null;
+  // editHandler: (id: string) => void;
 }
 
 const Todolist: React.FC<PropsType> = ({
@@ -35,6 +38,7 @@ const Todolist: React.FC<PropsType> = ({
   const [newTask, setNewTask] = useState<string>("");
   const [error, setError] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
+  const [editMode, setEditMode] = useState(false);
   // const [authUser, setAuthUser] = useState<User | null>(null);
 
   // Set status
@@ -64,7 +68,9 @@ const Todolist: React.FC<PropsType> = ({
     removeTask(id);
   };
 
-  const editTaskHandler = (id: string) => {};
+  // const editHandler = () => {
+  //   editHandler();
+  // };
 
   return (
     <div className="todolist-container flex justify-center items-center todolist-container bg-gray-500">
@@ -165,15 +171,16 @@ const Todolist: React.FC<PropsType> = ({
                       checked={t.isDone}
                       onChange={onChangeHandler}
                     />
-                    <span className={t.isDone ? "task-item-completed" : ""}>
-                      {t.title}
-                    </span>
                   </div>
-
+                  <EditableSpan
+                    title={t.title}
+                    isDone={t.isDone}
+                    // editHandler={editHandler}
+                  />
                   <div className="flex justify-center ">
-                    <div
+                    {/* <div
                       onClick={() => {
-                        editTaskHandler(t.id);
+                        editHandler();
                       }}
                     >
                       <svg
@@ -186,7 +193,7 @@ const Todolist: React.FC<PropsType> = ({
                       >
                         <path d="M 18.414062 2 C 18.158062 2 17.902031 2.0979687 17.707031 2.2929688 L 15.707031 4.2929688 L 14.292969 5.7070312 L 3 17 L 3 21 L 7 21 L 21.707031 6.2929688 C 22.098031 5.9019687 22.098031 5.2689063 21.707031 4.8789062 L 19.121094 2.2929688 C 18.926094 2.0979687 18.670063 2 18.414062 2 z M 18.414062 4.4140625 L 19.585938 5.5859375 L 18.292969 6.8789062 L 17.121094 5.7070312 L 18.414062 4.4140625 z M 15.707031 7.1210938 L 16.878906 8.2929688 L 6.171875 19 L 5 19 L 5 17.828125 L 15.707031 7.1210938 z"></path>
                       </svg>
-                    </div>
+                    </div> */}
 
                     <div
                       className="pl-2"

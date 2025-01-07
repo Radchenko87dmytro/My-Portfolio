@@ -81,7 +81,7 @@ const HeaderTailwind: React.FC = () => {
         console.log(error);
       });
   };
-  //fnfnxcnh@mailsac.com
+  //fnfnxc@mailsac.com
   //123456
 
   return (
@@ -114,7 +114,7 @@ const HeaderTailwind: React.FC = () => {
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 <Link
-                  to="/aboutme"
+                  to="/"
                   // key={item.name}
                   // href="/aboutme"
                   // aria-current={item.current ? "page" : undefined}
@@ -129,7 +129,7 @@ const HeaderTailwind: React.FC = () => {
                   AboutMe
                 </Link>
                 <Link
-                  to="/"
+                  to="/todolist"
                   onClick={() => setCurrent("todolist")}
                   // key={item.name}
                   // href="/"
