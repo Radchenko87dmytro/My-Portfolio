@@ -19,6 +19,7 @@ export interface PropsType {
   changeFilter: (value: FilterValuesType) => void;
   addTask: (title: string) => void;
   changeStatus: (id: string, isDone: boolean) => void;
+  changeTaskTitle: (id: string, newValue: string) => void;
   filter: FilterValuesType;
   setUserId: (id: string | null) => void;
   setAuthUser?: (user: User | null) => void; // Make setAuthUser optional
@@ -32,6 +33,7 @@ const Todolist: React.FC<PropsType> = ({
   changeFilter,
   addTask,
   changeStatus,
+  changeTaskTitle,
   filter,
   authUser, // Destructure authUser here
 }) => {
@@ -157,10 +159,13 @@ const Todolist: React.FC<PropsType> = ({
               </div>
             )}
             {tasks.map((t) => {
-              const onChangeHandler = (
+              const onChangeStatusHandler = (
                 event: React.ChangeEvent<HTMLInputElement>
               ) => {
                 changeStatus(t.id, event.currentTarget.checked);
+              };
+              const onChangeTitleHandler = (newValue: string) => {
+                changeTaskTitle(t.id, newValue);
               };
               return (
                 <div className="task-item" key={t.id}>
@@ -169,13 +174,13 @@ const Todolist: React.FC<PropsType> = ({
                       className="custom-checkbox"
                       type={"checkbox"}
                       checked={t.isDone}
-                      onChange={onChangeHandler}
+                      onChange={onChangeStatusHandler}
                     />
                   </div>
                   <EditableSpan
                     title={t.title}
                     isDone={t.isDone}
-                    // editHandler={editHandler}
+                    onChange={onChangeTitleHandler}
                   />
                   <div className="flex justify-center ">
                     {/* <div

@@ -116,6 +116,24 @@ const App: React.FC = () => {
     }
   };
 
+  const changeTaskTitle = async (id: string, newValue: string) => {
+    let task = tasks.find((t) => t.id === id);
+    if (task) {
+      task.title = newValue;
+    }
+    setTasks([...tasks]);
+    //localStorage.setItem("todoListTasks", JSON.stringify([...tasks]));
+    // Update the task's status in Firestore
+    try {
+      const taskDocRef = doc(db, "tasks", id); // Reference to the Firestore document by its ID
+      await updateDoc(taskDocRef, {
+        title: newValue, // Update the isDone field in Firestore
+      });
+    } catch (error) {
+      console.error("Error updating task status: ", error);
+    }
+  };
+
   return (
     <div className="App">
       {/*  setAuthUser={setAuthUser} setUserId={setUserId} */}
@@ -134,6 +152,7 @@ const App: React.FC = () => {
                 changeFilter={changeFilter}
                 addTask={addTask}
                 changeStatus={changeStatus}
+                changeTaskTitle={changeTaskTitle}
                 filter={filter}
                 setUserId={setUserId} // Pass the function to set user ID
                 authUser={authUser}

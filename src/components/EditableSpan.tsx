@@ -4,24 +4,29 @@ import { ChangeEvent, useEffect, useState } from "react";
 type EditableSpanPropsType = {
   title: string;
   isDone: boolean;
-  //  editHandler: () => void;
+  onChange: (newValue: string) => void;
 };
 
-export const EditableSpan: React.FC<EditableSpanPropsType> = ({
-  isDone,
-  title,
+export const EditableSpan: React.FC<EditableSpanPropsType> = (
+  props
   // editHandler,
-}) => {
+) => {
   const [editMode, setEditMode] = useState(false);
+  const [title, setTitle] = useState("");
 
-  const editHandler = () => {
+  const activateEditMode = () => {
     setEditMode(true);
+    setTitle(props.title);
   };
 
-  const [title0, setTitle] = useState("");
-  console.log(title);
+  const activateViewMode = () => {
+    setEditMode(false);
+    props.onChange(title);
+  };
+
   const onChangeTitleHandler = (e: ChangeEvent<HTMLInputElement>) =>
     setTitle(e.currentTarget.value);
+
   return (
     <div className="flex justify-between w-full ">
       <div>
@@ -29,27 +34,18 @@ export const EditableSpan: React.FC<EditableSpanPropsType> = ({
           <input
             className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             // autoFocus
-            value={title0}
-            onBlur={() => {
-              setEditMode(false);
-              setTitle(title);
-            }}
+            value={title}
+            onBlur={activateViewMode}
             onChange={onChangeTitleHandler}
           ></input>
         ) : (
-          <span className={isDone ? "task-item-completed" : ""}>
-            {/*  */}
-            {title} ---
+          <span className={props.isDone ? "task-item-completed" : ""}>
+            {props.title}
           </span>
         )}
       </div>
 
-      <div
-        className="flex-row  justify-end"
-        onClick={() => {
-          editHandler();
-        }}
-      >
+      <div className="flex-row  justify-end" onClick={activateEditMode}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
