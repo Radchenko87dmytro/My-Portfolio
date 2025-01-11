@@ -19,11 +19,11 @@
    width: 50%; 
 }*/
 
-.input-container {
-  /* display: flex;
+/* .input-container {
+  display: flex;
   justify-content: center;
-  align-items: center; */
-}
+  align-items: center; 
+}*/
 
 .input-area {
   text-align: center;
@@ -84,12 +84,12 @@
   width: 100%;
 }
 
-.active-filter {
-  /* color: white; */
-  /* font-size: 20px;
+/*.active-filter {
+   color: white; */
+/* font-size: 20px;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity)); */
-  /* box-shadow: 4px 4px rgb(24, 148, 20); */
-}
+/* box-shadow: 4px 4px rgb(24, 148, 20);
+} */
 
 .not-active-filter {
   /* color: white; */
