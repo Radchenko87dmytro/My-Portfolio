@@ -17,7 +17,7 @@ import { User } from "firebase/auth";
 import Header from "./components/Header";
 import HeaderTailwind from "./components/HeaderTailwind";
 import { useAuth } from "./components/AuthContext";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import AboutMe from "./pages/AboutMe";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -139,7 +139,8 @@ const App: React.FC = () => {
       {/*  setAuthUser={setAuthUser} setUserId={setUserId} */}
       {/* <Header setAuthUser={setAuthUser} setUserId={setUserId} /> */}
 
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
+      <HashRouter>
         <HeaderTailwind />
         <Routes>
           <Route path="/" element={<AboutMe />} />
@@ -162,7 +163,8 @@ const App: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
+      {/* </BrowserRouter> */}
     </div>
   );
 };
