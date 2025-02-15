@@ -250,13 +250,13 @@ const HeaderTailwind: React.FC = () => {
                   </div>
 
                   <MenuItem>
-                    <a
-                      href="/"
+                    <Link
+                      to="/abz"
                       className="flex justify-center px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       onClick={userSignout}
                     >
                       LogOut
-                    </a>
+                    </Link>
                   </MenuItem>
                 </MenuItems>
               </Menu>

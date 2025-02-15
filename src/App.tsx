@@ -165,6 +165,8 @@ const App: React.FC = () => {
         </Routes>
       </HashRouter>
       {/* </BrowserRouter> */}
+
+      {/* <Footer></Footer> */}
     </div>
   );
 };

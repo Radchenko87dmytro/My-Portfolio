@@ -75,11 +75,11 @@ const Todolist: React.FC<PropsType> = ({
   // };
 
   return (
-    <div className="todolist-container flex justify-center items-center todolist-container bg-gray-500">
+    <div className="todolist-container flex justify-center items-center h-full bg-gray-500">
       {/* <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} /> */}
 
       {authUser ? (
-        <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-5 min-h-[550px] rounded-xl">
+        <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-5 rounded-xl">
           <div className="flex justify-between items-center ">
             {/*item-container */}
             <input
