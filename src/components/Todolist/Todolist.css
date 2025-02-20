@@ -11,7 +11,7 @@
    */
   position: static;
 
-  /* height: calc(100vh - 174px); */
+  height: calc(100vh - 182px);
   top: 0;
   z-index: -1;
   /* position: static; */
@@ -283,7 +283,7 @@ svg:hover {
 
 @media screen and (max-height: 800px) {
   .task-section {
-    max-height: 33vh;
+    max-height: 40vh;
   }
 
   /* .todolist-container {
