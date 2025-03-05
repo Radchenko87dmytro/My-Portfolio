@@ -75,7 +75,7 @@ const Todolist: React.FC<PropsType> = ({
   // };
 
   return (
-    <div className="todolist-container flex justify-center items-center h-full bg-gray-500">
+    <div className="flex-1 p-3 justify-center items-center bg-gray-500">
       {/* <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} /> */}
 
       {authUser ? (
@@ -83,7 +83,7 @@ const Todolist: React.FC<PropsType> = ({
           <div className="flex justify-between items-center ">
             {/*item-container */}
             <input
-              className="text-sm  md:text-3xl md:h-14  input-area bg-transparent border-black border-2  rounded-lg w-full mr-4 py-4
+              className="text-sm  md:text-3xl md:h-14  text-center bg-transparent border-black border-2  rounded-lg w-full mr-4 py-2
                border-spacing-1"
               type="text"
               id="input-area"
@@ -114,7 +114,7 @@ const Todolist: React.FC<PropsType> = ({
             {error ? error : "hidden"}
           </p>
 
-          <div className="filter-section">
+          <div className="flex justify-start mt-2 w-full">
             <button
               className={
                 filter === "all"

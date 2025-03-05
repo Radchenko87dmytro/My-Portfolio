@@ -163,6 +163,7 @@ const App: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
+        <Footer></Footer>
       </HashRouter>
       {/* </BrowserRouter> */}
 

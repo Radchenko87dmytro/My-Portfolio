@@ -32,7 +32,7 @@ root.render(
       <App></App>
       {/* <HeaderTailwind /> */}
       {/* <RouterProvider router={router} /> */}
-      <Footer />
+      {/* <Footer /> */}
     </AuthProvider>
   </React.StrictMode>
 );
