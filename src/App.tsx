@@ -11,7 +11,7 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
-import { db } from "./firebase";
+
 import Footer from "./components/Footer";
 import { User } from "firebase/auth";
 import Header from "./components/Header";
@@ -21,6 +21,7 @@ import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import AboutMe from "./pages/AboutMe";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { db } from "./firebase";
 export type FilterValuesType = "all" | "completed" | "active";
 
 const App: React.FC = () => {

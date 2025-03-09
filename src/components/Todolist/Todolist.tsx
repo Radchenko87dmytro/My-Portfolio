@@ -152,7 +152,7 @@ const Todolist: React.FC<PropsType> = ({
               <h2>Completed</h2>
             </button>
           </div>
-          <ul className="task-section">
+          <ul className="block justify-center items-center w-full max-h-[46vh] overflow-auto p-[10px_10px_0px_0px]">
             {tasks.length === 0 && (
               <div className="task-message">
                 <p>You don't have any items on this list</p>
@@ -169,7 +169,7 @@ const Todolist: React.FC<PropsType> = ({
               };
               return (
                 <div className="task-item" key={t.id}>
-                  <div className="task-container">
+                  <div className="flex items-center">
                     <input
                       className="custom-checkbox"
                       type={"checkbox"}

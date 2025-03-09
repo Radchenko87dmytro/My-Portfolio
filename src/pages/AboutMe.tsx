@@ -36,7 +36,7 @@ const AboutMe: React.FC = () => {
               focusing on developing web pages using the Scrum methodology,
               which has greatly improved my workflow and project management
               skills. My strong skills include HTML, CSS, JavaScript,
-              TypeScript, GitHub, Git, React and using GhatGPT.
+              TypeScript, GitHub, Git, React and using AI.
             </p>
             <p className="about-me-text">
               I am proficient in HTML and CSS it allowing me to create good
@@ -47,7 +47,6 @@ const AboutMe: React.FC = () => {
               effectively.
             </p>
             <p className="about-me-text">
-              {" "}
               I am passionate about web development and interested to expand my
               skill set and stay updated with the latest industry trends and
               best practices.
