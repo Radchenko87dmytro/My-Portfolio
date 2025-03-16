@@ -13,11 +13,10 @@ import {
 } from "firebase/firestore";
 
 import Footer from "./components/Footer";
-import { User } from "firebase/auth";
-import Header from "./components/Header";
+
 import HeaderTailwind from "./components/HeaderTailwind";
 import { useAuth } from "./components/AuthContext";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import AboutMe from "./pages/AboutMe";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -26,9 +25,8 @@ export type FilterValuesType = "all" | "completed" | "active";
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Array<TaskType>>([]);
-  // const [userId, setUserId] = useState<string | null>(null);
-  // const [authUser, setAuthUser] = useState<User | null>(null);
-  const { authUser, setAuthUser, userId, setUserId } = useAuth();
+
+  const { authUser, userId, setUserId } = useAuth();
   const [filter, setFilter] = useState<FilterValuesType>("all");
 
   const fetchTasks = async (userId: string) => {

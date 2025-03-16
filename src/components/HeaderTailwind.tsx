@@ -8,47 +8,22 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-// import { AuthDetailsProps } from "./Header";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
-import { useNavigate } from "react-router";
 import { auth } from "../firebase";
 import { useAuth } from "./AuthContext";
 import { Link } from "react-router-dom";
-
-interface AuthDetailsProps {
-  setAuthUser: (user: User | null) => void; // Declare the type for setAuthUser prop
-  setUserId: (id: string | null) => void; // Assuming userId can be null
-}
 
 function classNames(...classes: (string | undefined | null)[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
 const HeaderTailwind: React.FC = () => {
-  // const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
   const [current, setCurrent] = useState<string>("aboutme");
-
-  // const handleNavigation = (path: string, name: string) => {
-  //   setCurrent(name); // Update the active state
-  //   navigate(path); // Navigate to the route
-  // };
-
-  const [clikcEvent, setClickEvent] = useState(false);
-  const { authUser, setAuthUser, userId, setUserId } = useAuth();
-
-  // const navigation = [
-  //   { name: "AboutMe", href: "/aboutme", current: "aboutme" },
-  //   { name: "Todolist", href: "/", current: "todolist" },
-  //   // { name: "Next Project", href: "/next", current: undefined },
-  // ];
-
-  console.log(current);
+  const { setAuthUser, setUserId } = useAuth();
 
   useEffect(() => {
-    //setCurrentTodolist(currentTodolist);
-
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
@@ -58,14 +33,9 @@ const HeaderTailwind: React.FC = () => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         setUserId(uid);
-        //navigate("/");
-        console.log("uid", uid);
-        console.log(user);
       } else {
         setAuthUser(null);
         setUser(null);
-        // User is signed out
-        // navigate("/");
       }
     });
   }, [setAuthUser]);
@@ -73,12 +43,9 @@ const HeaderTailwind: React.FC = () => {
   const userSignout = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
-        // navigate("/");
         console.log("Signed out successfully");
       })
       .catch((error) => {
-        // An error happened.
         console.log(error);
       });
   };
@@ -132,10 +99,6 @@ const HeaderTailwind: React.FC = () => {
                 <Link
                   to="/todolist"
                   onClick={() => setCurrent("todolist")}
-                  // key={item.name}
-                  // href="/"
-                  // aria-current={item.current ? "page" : undefined}
-                  // onClick={() => handleNavigation("/", "todolist")}
                   className={classNames(
                     current === "todolist"
                       ? "bg-gray-900 text-white"
@@ -182,11 +145,6 @@ const HeaderTailwind: React.FC = () => {
                         d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                       />
                     </svg>
-                    {/* <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    className="h-8 w-8 rounded-full md:h-10 md:w-16"
-                  /> */}
                   </MenuButton>
                 </div>
                 <MenuItems
@@ -234,11 +192,6 @@ const HeaderTailwind: React.FC = () => {
                         d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                       />
                     </svg>
-                    {/* <img
-                      alt=""
-                      src={user.photoURL || "/default-avatar.png"}
-                      className="h-8 w-8 rounded-full"
-                    /> */}
                   </MenuButton>
                 </div>
                 <MenuItems
@@ -266,28 +219,6 @@ const HeaderTailwind: React.FC = () => {
         </div>
       </div>
 
-      {/* <DisclosurePanel className="sm:hidden">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          {navigation.map((item) => (
-            <DisclosureButton
-              key={item.name}
-              as="a"
-              href={item.href}
-              aria-current={item.current ? "page" : undefined}
-              className={classNames(
-                item.current
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                "block rounded-md px-3 py-2 text-base font-medium"
-              )}
-            >
-              {item.name}
-            </DisclosureButton>
-          ))}
-        </div>
-      </DisclosurePanel> */}
-
-      {/*  */}
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pb-3 pt-2">
           <DisclosureButton

@@ -1,5 +1,4 @@
-import { divide } from "cypress/types/lodash";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 type EditableSpanPropsType = {
   title: string;
@@ -7,10 +6,7 @@ type EditableSpanPropsType = {
   onChange: (newValue: string) => void;
 };
 
-export const EditableSpan: React.FC<EditableSpanPropsType> = (
-  props
-  // editHandler,
-) => {
+export const EditableSpan: React.FC<EditableSpanPropsType> = (props) => {
   const [editMode, setEditMode] = useState(false);
   const [title, setTitle] = useState("");
 

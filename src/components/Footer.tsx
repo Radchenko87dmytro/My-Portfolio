@@ -1,12 +1,11 @@
 import React from "react";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer className=" flex bg-gray-800 text-white py-10">
       <div className="container mx-auto flex flex-col items-center justify-between md:flex-row ">
         {/* Left Section - Description */}
         <div className=" mb-4 md:mb-0 flex justify-around xl:ml-10 2xl:ml-9">
-          {/* sm:text-xs md:text-xl lg:text-2xl xl:text-3xl */}
           <p className="flex text-center md:text-left text-xs sm:text-sm md:text-lg lg:text-xl">
             © {new Date().getFullYear()} Todolist Project. All rights reserved.
           </p>

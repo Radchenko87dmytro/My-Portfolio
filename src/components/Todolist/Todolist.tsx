@@ -2,10 +2,12 @@ import "./Todolist.css";
 import { FilterValuesType } from "../../App";
 import { ChangeEvent, useEffect, useState } from "react";
 import { User } from "firebase/auth";
-import { props } from "cypress/types/bluebird";
 import { EditableSpan } from "../EditableSpan";
 
-// document.cookie = "key=value; SameSite=Strict; Secure";
+const activeFilterClass =
+  "text-xs w-16  mx-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9";
+const notActiveFilterClass =
+  "text-xs w-16  mx-2 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9";
 
 export interface TaskType {
   id: string;
@@ -24,7 +26,6 @@ export interface PropsType {
   setUserId: (id: string | null) => void;
   setAuthUser?: (user: User | null) => void; // Make setAuthUser optional
   authUser: User | null;
-  // editHandler: (id: string) => void;
 }
 
 const Todolist: React.FC<PropsType> = ({
@@ -40,13 +41,9 @@ const Todolist: React.FC<PropsType> = ({
   const [newTask, setNewTask] = useState<string>("");
   const [error, setError] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
-  const [editMode, setEditMode] = useState(false);
-  // const [authUser, setAuthUser] = useState<User | null>(null);
 
-  // Set status
   useEffect(() => {
     if (newTask.trim() === "") {
-      // setError("Please type some text");
       setBtnDisabled(true);
     } else if (newTask.trim().length >= 20) {
       setBtnDisabled(true);
@@ -70,14 +67,8 @@ const Todolist: React.FC<PropsType> = ({
     removeTask(id);
   };
 
-  // const editHandler = () => {
-  //   editHandler();
-  // };
-
   return (
-    <div className="flex-1 p-3 justify-center items-center bg-gray-500">
-      {/* <AuthDetails setAuthUser={setAuthUser} setUserId={props.setUserId} /> */}
-
+    <div className=" todolist-container flex-1 p-4 justify-center items-center bg-gray-500">
       {authUser ? (
         <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-5 rounded-xl">
           <div className="flex justify-between items-center ">
@@ -114,12 +105,10 @@ const Todolist: React.FC<PropsType> = ({
             {error ? error : "hidden"}
           </p>
 
-          <div className="flex justify-start mt-2 w-full">
+          <div className="filter-section flex justify-start mt-2 w-full">
             <button
               className={
-                filter === "all"
-                  ? "text-xs w-16  mx-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9"
-                  : "text-xs w-16  mx-2 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9"
+                filter === "all" ? activeFilterClass : notActiveFilterClass
               }
               onClick={() => {
                 changeFilter("all");
@@ -129,9 +118,7 @@ const Todolist: React.FC<PropsType> = ({
             </button>
             <button
               className={
-                filter === "active"
-                  ? "text-xs w-16  mx-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9"
-                  : "text-xs w-16  mx-2 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9"
+                filter === "active" ? activeFilterClass : notActiveFilterClass
               }
               onClick={() => {
                 changeFilter("active");
@@ -142,8 +129,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 filter === "completed"
-                  ? "text-xs w-16  mx-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9"
-                  : "text-xs w-16  mx-2 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9"
+                  ? activeFilterClass
+                  : notActiveFilterClass
               }
               onClick={() => {
                 changeFilter("completed");
@@ -152,9 +139,9 @@ const Todolist: React.FC<PropsType> = ({
               <h2>Completed</h2>
             </button>
           </div>
-          <ul className="block justify-center items-center w-full max-h-[46vh] overflow-auto p-[10px_10px_0px_0px]">
+          <ul className=" block justify-center items-center w-full max-h-[46vh] overflow-auto pt-3">
             {tasks.length === 0 && (
-              <div className="task-message">
+              <div className="task-message flex justify-center text-xl">
                 <p>You don't have any items on this list</p>
               </div>
             )}
@@ -168,7 +155,10 @@ const Todolist: React.FC<PropsType> = ({
                 changeTaskTitle(t.id, newValue);
               };
               return (
-                <div className="task-item" key={t.id}>
+                <div
+                  className="task-item flex justify-between items-center text-2xl bg-white font-normal not-italic p-4 mb-3  border-2 border-[rgb(156,142,142)] rounded-[8px]"
+                  key={t.id}
+                >
                   <div className="flex items-center">
                     <input
                       className="custom-checkbox"
@@ -183,23 +173,6 @@ const Todolist: React.FC<PropsType> = ({
                     onChange={onChangeTitleHandler}
                   />
                   <div className="flex justify-center ">
-                    {/* <div
-                      onClick={() => {
-                        editHandler();
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        width="35"
-                        height="35"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M 18.414062 2 C 18.158062 2 17.902031 2.0979687 17.707031 2.2929688 L 15.707031 4.2929688 L 14.292969 5.7070312 L 3 17 L 3 21 L 7 21 L 21.707031 6.2929688 C 22.098031 5.9019687 22.098031 5.2689063 21.707031 4.8789062 L 19.121094 2.2929688 C 18.926094 2.0979687 18.670063 2 18.414062 2 z M 18.414062 4.4140625 L 19.585938 5.5859375 L 18.292969 6.8789062 L 17.121094 5.7070312 L 18.414062 4.4140625 z M 15.707031 7.1210938 L 16.878906 8.2929688 L 6.171875 19 L 5 19 L 5 17.828125 L 15.707031 7.1210938 z"></path>
-                      </svg>
-                    </div> */}
-
                     <div
                       className="pl-2"
                       onClick={() => {
