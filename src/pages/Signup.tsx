@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-//import "./Signup.css";
 import { useNavigate } from "react-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { error } from "console";
-import { NavLink } from "react-router-dom";
-import { Button, Form, Container, Alert } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
@@ -26,9 +23,6 @@ const Signup: React.FC = () => {
 
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
         navigate("/login");
       })
       .catch((error) => {
@@ -43,11 +37,6 @@ const Signup: React.FC = () => {
     <div className="flex justify-center p-4 sm:p-8 md:p-16 bg-slate-50">
       <div className="flex min-h-full flex-col justify-center px-4 py-6 sm:px-8 sm:py-10 lg:px-24 border-2 rounded-md divide-gray-300 border-solid shadow-xl bg-white">
         <div className="sm:mx-auto sm:w-full sm:max-w-md md:max-w-lg lg:max-w-xl ">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
           <h2 className="mt-10 text-center font-bold leading-9 tracking-tight text-gray-900   text-sm md:text-xl lg:text-2xl">
             Create Account
           </h2>
@@ -101,12 +90,12 @@ const Signup: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-between text-sm mt-4">
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -153,12 +142,12 @@ const Signup: React.FC = () => {
           </form>
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?
-            <a
-              href="#"
+            <Link
+              to="#"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Start a 14 day free trial
-            </a>
+            </Link>
           </p>
         </div>
       </div>

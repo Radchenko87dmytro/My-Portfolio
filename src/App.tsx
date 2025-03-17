@@ -13,7 +13,6 @@ import {
 } from "firebase/firestore";
 
 import Footer from "./components/Footer";
-
 import HeaderTailwind from "./components/HeaderTailwind";
 import { useAuth } from "./components/AuthContext";
 import { HashRouter, Route, Routes } from "react-router-dom";
@@ -55,7 +54,6 @@ const App: React.FC = () => {
   const removeTask = async (id: string) => {
     let newTasks = tasks.filter((t) => t.id !== id);
     setTasks(newTasks);
-    //localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
 
     // Remove task from Firestore
     try {
@@ -65,9 +63,6 @@ const App: React.FC = () => {
       console.error("Error removing task: ", error);
     }
   };
-
-  //localStorage.setItem("todoListTasks", JSON.stringify(newTasks));
-  // };
 
   const addTask = async (title: string) => {
     try {
@@ -103,7 +98,7 @@ const App: React.FC = () => {
       task.isDone = isDone;
     }
     setTasks([...tasks]);
-    //localStorage.setItem("todoListTasks", JSON.stringify([...tasks]));
+
     // Update the task's status in Firestore
     try {
       const taskDocRef = doc(db, "tasks", id); // Reference to the Firestore document by its ID
@@ -121,8 +116,6 @@ const App: React.FC = () => {
       task.title = newValue;
     }
     setTasks([...tasks]);
-    //localStorage.setItem("todoListTasks", JSON.stringify([...tasks]));
-    // Update the task's status in Firestore
     try {
       const taskDocRef = doc(db, "tasks", id); // Reference to the Firestore document by its ID
       await updateDoc(taskDocRef, {
@@ -135,10 +128,6 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      {/*  setAuthUser={setAuthUser} setUserId={setUserId} */}
-      {/* <Header setAuthUser={setAuthUser} setUserId={setUserId} /> */}
-
-      {/* <BrowserRouter> */}
       <HashRouter>
         <HeaderTailwind />
         <Routes>
@@ -164,9 +153,6 @@ const App: React.FC = () => {
         </Routes>
         <Footer></Footer>
       </HashRouter>
-      {/* </BrowserRouter> */}
-
-      {/* <Footer></Footer> */}
     </div>
   );
 };

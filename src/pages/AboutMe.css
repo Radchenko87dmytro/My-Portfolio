@@ -16,11 +16,6 @@ a {
   text-decoration: none;
 }
 
-/* svg {
-  height: 70px;
-  width: 70px;
-} */
-
 .roboto-regular {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -153,22 +148,13 @@ Section with skills
 }
 
 .item-icon {
-  /* background-color: gray; */
   padding: 2rem;
   border-radius: 1rem;
 }
 
 .item-icon-icons {
   color: #e0933e;
-  /* background-color: gray; */
-  /* padding: 1rem; */
   border-radius: 1rem;
-}
-
-.item-icon-icons:hover {
-  /* width: 5rem;
-  height: 5rem;
-  transition: all 0.4s ease; */
 }
 
 .item-icon:hover {
@@ -189,11 +175,6 @@ Media queries
   .contact {
     font-size: 15px;
   }
-
-  /* svg {
-    height: 30px;
-    width: 30px;
-  } */
 }
 
 /* 
@@ -234,28 +215,9 @@ Media queries
     width: 65%;
   }
 
-  .item-icon {
-    /* font-size: 2rem;
-    padding: 1rem;
-    */
-  }
-
-  .item-icon-icons {
-    /* width: 2rem;
-    height: 2rem; */
-    /* padding: 1rem; */
-  }
   .item-icon :hover {
     font-size: 2rem;
   }
-
-  /* .svg-icons {
-    font-size: 1rem;
-  } */
-
-  /* .svg-icons a {
-    margin: 0 1rem;
-  } */
 
   .contact {
     padding: 5px 10px;

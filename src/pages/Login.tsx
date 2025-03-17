@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from "react";
-//import "./Login.css";
 import { useNavigate } from "react-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { NavLink } from "react-router-dom";
-
-import { Button, Form, Container, Alert } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState(false);
-  // State to toggle password visibility
-  const [showPassword, setShowPassword] = useState(false);
-
-  // Function to toggle password visibility
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevState) => !prevState);
-  };
 
   useEffect(() => {
     if (email.match(/^[^@]+@[^@]+\.[^@]+$/) && password?.length > 5) {
@@ -45,17 +35,9 @@ const Login: React.FC = () => {
   };
 
   return (
-    //<a href={`/`}>Back Home </a> <h2>Login</h2>
-    //bg-slate-300
-
     <div className="flex justify-center p-4 sm:p-8 md:p-16 bg-slate-50">
       <div className="flex min-h-full flex-col justify-center px-4 py-6 sm:px-8 sm:py-10 lg:px-24 border-2 rounded-md divide-gray-300 border-solid shadow-xl bg-white">
         <div className="sm:mx-auto sm:w-full sm:max-w-md md:max-w-lg lg:max-w-xl ">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
           <h2 className="mt-10 text-center font-bold leading-9 tracking-tight text-gray-900 text-sm md:text-xl lg:text-2xl">
             Login to your Account
           </h2>
@@ -109,12 +91,12 @@ xl:text-lg xl:leading-9"
               </div>
 
               <div className="flex items-center justify-between text-sm mt-4">
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -160,12 +142,12 @@ xl:text-lg xl:leading-9"
           </form>
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?
-            <a
-              href="#"
+            <Link
+              to="#"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Start a 14 day free trial
-            </a>
+            </Link>
           </p>
         </div>
       </div>

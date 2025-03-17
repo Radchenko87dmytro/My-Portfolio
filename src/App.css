@@ -24,20 +24,8 @@ label {
   font-size: 2rem;
 }
 
-h2 {
-  /* padding: 8px 4px; */
-}
-
 ul {
   list-style-type: none;
-  /* background-color: azure; */
   padding: 1rem 0;
   border-radius: 20px;
 }
-
-/* button {
-  margin: 10px;
-  border-radius: 8px;
-  width: 100%;
-  cursor: pointer;
-} */

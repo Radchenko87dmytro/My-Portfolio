@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AboutMe.css";
-import HeaderTailwind from "../components/HeaderTailwind";
-import { User } from "firebase/auth";
 import image from "./IMG_1058.jpg";
 
 const AboutMe: React.FC = () => {
-  // const [userId, setUserId] = useState<string | null>(null);
-  // const [authUser, setAuthUser] = useState<User | null>(null);
   return (
     <div>
-      {/* <HeaderTailwind /> */}
       <div className="aboutMe">
         <section className="section">
           <div className="section-flex">

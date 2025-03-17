@@ -66,20 +66,6 @@ svg:hover {
     height: 15px;
   }
 
-  .todolist-container {
-    padding-top: 10px;
-  }
-
-  .item-container {
-    width: 100%;
-  }
-
-  .input-area {
-    text-align: center;
-    width: 80%;
-    height: 28px;
-  } /**/
-
   .error {
     display: flex;
     justify-content: center;
@@ -99,15 +85,9 @@ svg:hover {
     font-size: 15px;
   }
 
-  .task-section {
-    width: 100%;
-    margin: 0 auto;
-    padding: 10px 0px;
-  }
-
   .task-item {
     font-size: 20px;
-    width: 96%;
+    width: 98%;
   }
 
   .add-button,
@@ -130,18 +110,9 @@ svg:hover {
   button {
     margin: 5px;
   }
-  .todolist-container {
-    padding-top: 10px;
-    flex: 1;
-    height: calc(100vh - 172px);
-  }
-
-  .task-section {
-    width: 100%;
-  }
 
   .task-item {
-    width: 100%;
+    width: 98%;
   }
 }
 
@@ -154,6 +125,6 @@ svg:hover {
 /* Larger screens (1024px and above) */
 @media (min-width: 1024px) {
   .task-item {
-    width: 100%;
+    width: 98%;
   }
 }

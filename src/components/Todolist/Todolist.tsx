@@ -5,9 +5,9 @@ import { User } from "firebase/auth";
 import { EditableSpan } from "../EditableSpan";
 
 const activeFilterClass =
-  "text-xs w-16  mx-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9";
+  "text-xs w-16  mr-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9";
 const notActiveFilterClass =
-  "text-xs w-16  mx-2 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9";
+  "text-xs w-16  mr-4 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9";
 
 export interface TaskType {
   id: string;
@@ -68,7 +68,7 @@ const Todolist: React.FC<PropsType> = ({
   };
 
   return (
-    <div className=" todolist-container flex-1 p-4 justify-center items-center bg-gray-500">
+    <div className="flex-1 p-4 justify-center items-center bg-gray-500">
       {authUser ? (
         <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-5 rounded-xl">
           <div className="flex justify-between items-center ">
@@ -139,7 +139,7 @@ const Todolist: React.FC<PropsType> = ({
               <h2>Completed</h2>
             </button>
           </div>
-          <ul className=" block justify-center items-center w-full max-h-[46vh] overflow-auto pt-3">
+          <ul className="block justify-center items-center w-full max-h-[46vh] overflow-auto pt-3">
             {tasks.length === 0 && (
               <div className="task-message flex justify-center text-xl">
                 <p>You don't have any items on this list</p>

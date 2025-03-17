@@ -38,19 +38,18 @@ const HeaderTailwind: React.FC = () => {
         setUser(null);
       }
     });
-  }, [setAuthUser]);
+  }, [setAuthUser, setUserId]);
 
   const userSignout = () => {
     signOut(auth)
-      .then(() => {
-        console.log("Signed out successfully");
-      })
+      .then(() => {})
       .catch((error) => {
         console.log(error);
       });
   };
-  //fnfnxc@mailsac.com
-  //123456
+
+  //ewqfqawefdq@mailsac.com
+  //789789
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -83,9 +82,6 @@ const HeaderTailwind: React.FC = () => {
               <div className="flex space-x-4">
                 <Link
                   to="/"
-                  // key={item.name}
-                  // href="/aboutme"
-                  // aria-current={item.current ? "page" : undefined}
                   onClick={() => setCurrent("aboutme")}
                   className={classNames(
                     current === "aboutme"
@@ -249,7 +245,6 @@ const HeaderTailwind: React.FC = () => {
           </DisclosureButton>
         </div>
       </DisclosurePanel>
-      {/*  */}
     </Disclosure>
   );
 };
