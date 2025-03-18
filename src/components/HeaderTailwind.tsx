@@ -93,6 +93,7 @@ const HeaderTailwind: React.FC = () => {
                   AboutMe
                 </Link>
                 <Link
+                  id="todolist"
                   to="/todolist"
                   onClick={() => setCurrent("todolist")}
                   className={classNames(
@@ -119,7 +120,7 @@ const HeaderTailwind: React.FC = () => {
 
             {/* Profile dropdown */}
             {!user ? (
-              <Menu as="div" className="relative ml-3 ">
+              <Menu id="log-menu" as="div" className="log-menu relative ml-3 ">
                 <div>
                   <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 ">
                     <span className="absolute -inset-1.5" />
@@ -149,8 +150,9 @@ const HeaderTailwind: React.FC = () => {
                 >
                   <MenuItem>
                     <Link
+                      id="log"
                       to="/login"
-                      className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                      className="log block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                     >
                       Login
                     </Link>
@@ -202,7 +204,7 @@ const HeaderTailwind: React.FC = () => {
                   <MenuItem>
                     <Link
                       to="/"
-                      className="flex justify-center px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                      className="sign-out flex justify-center px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       onClick={userSignout}
                     >
                       LogOut

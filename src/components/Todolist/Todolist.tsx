@@ -74,7 +74,7 @@ const Todolist: React.FC<PropsType> = ({
           <div className="flex justify-between items-center ">
             {/*item-container */}
             <input
-              className="text-sm  md:text-3xl md:h-14  text-center bg-transparent border-black border-2  rounded-lg w-full mr-4 py-2
+              className="input-area text-sm  md:text-3xl md:h-14  text-center bg-transparent border-black border-2  rounded-lg w-full mr-4 py-2
                border-spacing-1"
               type="text"
               id="input-area"
@@ -88,8 +88,8 @@ const Todolist: React.FC<PropsType> = ({
             <button
               className={
                 btnDisabled
-                  ? "text-sm w-20  px-4 py-2 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
-                  : "text-sm w-20  px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
+                  ? "add-button-disabled text-sm w-20  px-4 py-2 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
+                  : "add-button text-sm w-20  px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
               }
               onClick={(e) => {
                 e.stopPropagation();

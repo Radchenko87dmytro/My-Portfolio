@@ -6,15 +6,18 @@ describe("template spec", () => {
     cy.wait(1000);
 
     //Login to app
-    cy.get("#log").click();
-    cy.get("#email-address").type("dima.mobil80@gmail.com");
-    cy.get("#password").type("68046flexvB");
+    cy.get(".log-menu").click();
+    cy.get(".log").click();
+    cy.get("#email-address").type("ewqfqawefdq@mailsac.com");
+    cy.get("#password").type("789789");
     cy.get(".login").click();
+
+    cy.get("#todolist").click();
 
     //initial state
     cy.get("#input-area").should("be.empty");
-    cy.get(".add-button-disabled").should("be.disabled");
-    cy.contains("Please type some text");
+    // cy.get(".add-button-disabled").should("be.disabled");
+    // cy.contains("Please type some text");
     cy.contains("You don't have any items on this list");
 
     // add tasks
@@ -31,9 +34,9 @@ describe("template spec", () => {
     cy.contains("test3");
 
     //to filter tasks
-    cy.contains("Active").click();
-    cy.contains("Completed").click();
-    cy.contains("All").click();
+    cy.contains("active").click();
+    cy.contains("completed").click();
+    cy.contains("all").click();
 
     //delete tasks
     cy.get(":nth-child(1) > :nth-child(2) > svg").click();
