@@ -100,7 +100,7 @@ Section with skills
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  width: 70%;
+  width: 80%;
   color: white;
   justify-content: center;
   text-align: center;
@@ -128,6 +128,15 @@ Section with skills
   padding: 20px;
   box-shadow: 7px 7px rgb(92, 89, 89);
 }
+
+/* svg:hover {
+  background-color: transparent;
+} */
+
+/* svg:hover {
+  background-color: transparent;
+  text-decoration: none;
+} */
 
 .item-text {
   display: flex;
@@ -212,7 +221,7 @@ Media queries
   }
 
   .container-item {
-    width: 65%;
+    width: 80%;
   }
 
   .item-icon :hover {

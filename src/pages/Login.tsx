@@ -24,7 +24,7 @@ const Login: React.FC = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate("/");
+        navigate("/todolist");
         console.log(user);
       })
       .catch((error) => {

@@ -52,6 +52,7 @@ const AboutMe: React.FC = () => {
             <h2 className="item-text">HTML</h2>
             <div className="item-icon-container">
               <svg
+                style={{ backgroundColor: "transparent" }}
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
                 y="0px"

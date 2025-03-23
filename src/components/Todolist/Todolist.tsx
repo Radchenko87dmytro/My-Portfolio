@@ -5,9 +5,9 @@ import { User } from "firebase/auth";
 import { EditableSpan } from "../EditableSpan";
 
 const activeFilterClass =
-  "text-xs w-16  mr-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-20 md:h-9";
+  "text-xs w-20  mr-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-sm md:w-24 md:h-9";
 const notActiveFilterClass =
-  "text-xs w-16  mr-4 bg-gray-500 text-white rounded-lg  md:text-sm md:w-20 md:h-9";
+  "text-xs w-20  mr-4 bg-gray-500 text-white rounded-lg  md:text-sm md:w-24 md:h-9";
 
 export interface TaskType {
   id: string;
@@ -70,7 +70,7 @@ const Todolist: React.FC<PropsType> = ({
   return (
     <div className="flex-1 p-4 justify-center items-center bg-gray-500">
       {authUser ? (
-        <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-5 rounded-xl">
+        <div className="bg-white w-96 sm:w-3/5 lg:w-1/2 flex flex-col place-self-center p-5 m-5 rounded-xl">
           <div className="flex justify-between items-center ">
             {/*item-container */}
             <input
@@ -86,10 +86,11 @@ const Todolist: React.FC<PropsType> = ({
             />
 
             <button
+              id="add-button"
               className={
                 btnDisabled
-                  ? "add-button-disabled text-sm w-20  px-4 py-2 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
-                  : "add-button text-sm w-20  px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
+                  ? "add-button-disabled flex justify-center items-center text-sm w-20  px-4 py-2 bg-gray-500 text-white rounded-lg  md:text-xl md:w-3/12 md:h-14"
+                  : "add-button flex justify-center items-center text-sm w-20  px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer md:text-xl md:w-3/12 md:h-14"
               }
               onClick={(e) => {
                 e.stopPropagation();
@@ -172,7 +173,7 @@ const Todolist: React.FC<PropsType> = ({
                     isDone={t.isDone}
                     onChange={onChangeTitleHandler}
                   />
-                  <div className="flex justify-center ">
+                  <div className="flex justify-center items-center">
                     <div
                       className="pl-2"
                       onClick={() => {

@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "../firebase";
 import { useAuth } from "./AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function classNames(...classes: (string | undefined | null)[]): string {
   return classes.filter(Boolean).join(" ");
@@ -22,6 +22,7 @@ const HeaderTailwind: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [current, setCurrent] = useState<string>("aboutme");
   const { setAuthUser, setUserId } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -41,6 +42,7 @@ const HeaderTailwind: React.FC = () => {
   }, [setAuthUser, setUserId]);
 
   const userSignout = () => {
+    navigate("/");
     signOut(auth)
       .then(() => {})
       .catch((error) => {
@@ -73,11 +75,9 @@ const HeaderTailwind: React.FC = () => {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
+              <p className="h-7 w-40 text-white text-center font-serif text-md sm:text-2xl italic">
+                My-Portfolio
+              </p>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
@@ -226,7 +226,7 @@ const HeaderTailwind: React.FC = () => {
             onClick={() => setCurrent("aboutme")}
             className={classNames(
               current === "aboutme"
-                ? "bg-gray-900 text-white  w-24"
+                ? "bg-gray-900 text-white  w-full"
                 : "text-gray-300 hover:bg-gray-700 hover:text-white",
               "block rounded-md px-3 py-2 text-base font-medium"
             )}
@@ -239,7 +239,7 @@ const HeaderTailwind: React.FC = () => {
             onClick={() => setCurrent("todolist")}
             className={classNames(
               current === "todolist"
-                ? "bg-gray-900 text-white  w-24"
+                ? "bg-gray-900 text-white  w-full"
                 : "text-gray-300 hover:bg-gray-700 hover:text-white",
               "block rounded-md px-3 py-2 text-base font-medium"
             )}

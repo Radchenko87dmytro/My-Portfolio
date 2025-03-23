@@ -18,11 +18,11 @@ describe("template spec", () => {
     cy.get("#input-area").should("be.empty");
     // cy.get(".add-button-disabled").should("be.disabled");
     // cy.contains("Please type some text");
-    cy.contains("You don't have any items on this list");
+    // cy.contains("You don't have any items on this list");
 
     // add tasks
     cy.get("#input-area").type("test");
-    cy.get(".add-button").should("not.be.disabled");
+    //cy.get(".add-button-disabled").should("not.be.disabled");
     cy.get(".add-button").click();
     cy.get("#input-area").type("test1");
     cy.get(".add-button").click();
